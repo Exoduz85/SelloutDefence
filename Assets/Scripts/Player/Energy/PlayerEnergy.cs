@@ -1,4 +1,6 @@
-﻿using EventBrokerFolder;
+﻿using System;
+using Core;
+using EventBrokerFolder;
 using UnityEngine;
 
 namespace Player.Energy {
@@ -6,12 +8,15 @@ namespace Player.Energy {
     public class PlayerEnergy : MonoBehaviour {
         int RemainingEnergy { get; set; }
 
+        DateTime lastLogin;
+        DateTime now;
+
         void Start() {
-            EventBroker.Instance().SubscribeMessage<PlayerEnergyEvent>(Energy);
+            EventBroker.Instance().SubscribeMessage<UpdatePlayerEnergyEvent>(UpdateEnergy);
         }
 
-        void Energy(PlayerEnergyEvent energy) {
-            this.RemainingEnergy += energy.Energy.AmountToUpdate();
+        void UpdateEnergy(UpdatePlayerEnergyEvent energy) {
+            this.RemainingEnergy += energy.EnergyToUpdate;
             Debug.Log($"Remaining energy: {this.RemainingEnergy}");
         }
     }
