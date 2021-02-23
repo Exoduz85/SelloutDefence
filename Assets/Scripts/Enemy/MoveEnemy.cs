@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Enemy{
@@ -12,7 +14,15 @@ namespace Enemy{
     
         // Start is called before the first frame update
         void Start(){
-            waypoints = FindObjectOfType<Waypoints>().GetComponentsInChildren<Transform>();
+            //find the Waypoints gameobject that has the same path as this enemy type.
+            var waypointList = new List<Waypoints>();
+            waypointList = FindObjectsOfType<Waypoints>().ToList();
+            waypointList = waypointList.FindAll(waypoint => waypoint.waypointsPath == this.waypointPath);
+            if (waypointList.Count == 0)
+                return;
+            
+            //get all the waypoints from that list, to traverse by the enemy
+            waypoints = waypointList.First().GetComponentsInChildren<Transform>();
         }
 
         // Update is called once per frame
@@ -25,7 +35,7 @@ namespace Enemy{
 
         private void MoveToNextWaypoint(){
 
-            if (currentWaypoint >= waypoints.Length)
+            if (waypoints == null || currentWaypoint >= waypoints.Length)
                 return;
         
             this.transform.position = Vector3.MoveTowards(this.transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
