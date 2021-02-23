@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccfa1bf4d6ccd554092fb2eaf151d268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypointPath: {fileID: 11400000, guid: c15b2790147da9f4e97441cbf973610f, type: 2}
   speed: 10
 --- !u!54 &8901751103076651289
 Rigidbody:
