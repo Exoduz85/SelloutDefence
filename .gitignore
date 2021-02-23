@@ -76,3 +76,4 @@ crashlytics-build.properties
 ProjectSettings/VersionControlSettings.asset
 ProjectSettings/VersionControlSettings.asset
 .vscode/settings.json
+Packages/packages-lock.json
