@@ -20,10 +20,6 @@ namespace EventBrokerFolder{
         }
 
         public void UnsubscribeMessage<TMessage>(Action<TMessage> callback){
-            //dictionary  (int, callback: updateplayerhealth() + updateplayerage())
-            //            (float, callback: updateplayertmp())
-            //            (bool, callback: playerdies())
-        
             if (this.subscribers.TryGetValue(typeof(TMessage), out var oldSubscribers)) {
                 callback = (oldSubscribers as Action<TMessage>) - callback;
 
