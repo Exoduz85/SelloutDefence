@@ -10,6 +10,6 @@ namespace Enemy{
             PathC
         
         }
-        [SerializeField] private PathType pathtype;
+        [SerializeField] public PathType pathtype;
     }
 }
