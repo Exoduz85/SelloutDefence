@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -7,18 +8,18 @@ namespace Saving {
     public class SaveSystem : MonoBehaviour {
         const string SaveFileName = "/SelloutDefence.sav";
 
-        public void Save() {
+        public IEnumerator Save() {
             var path = GetFilePath(SaveFileName);
             print($"Saving {path}");
             var state = LoadFile(path);
-            CaptureState(state);
+            yield return CaptureState(state);
             SaveFile(SaveFileName, state);
         }
 
-        public void Load() {
+        public IEnumerator Load() {
             var path = GetFilePath(SaveFileName);
             print($"Loading {path}");
-            RestoreState(LoadFile(path));
+            yield return RestoreState(LoadFile(path));
         }
 
         void SaveFile(string saveFile, object state) {
@@ -40,17 +41,20 @@ namespace Saving {
             }
         }
 
-        void CaptureState(Dictionary<string, object> state) {
+        IEnumerator CaptureState(Dictionary<string, object> state) {
             foreach (var entity in FindObjectsOfType<SavableEntity>())
                 state[entity.UniqueIdentifier()] = entity.CaptureState();
+            yield return null;
         }
 
-        void RestoreState(Dictionary<string, object> state) {
+        IEnumerator RestoreState(Dictionary<string, object> state) {
             foreach (var entity in FindObjectsOfType<SavableEntity>()) {
                 var id = entity.UniqueIdentifier();
                 if (state.ContainsKey(id))
                     entity.RestoreState(state[id]);
             }
+
+            yield return null;
         }
 
         string GetFilePath(string fileName)
