@@ -503,6 +503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e13d3e64f284d1ea642cefee672e109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  energyFillCd: 120
+  energyText: {fileID: 158348213}
 --- !u!4 &1363221346
 Transform:
   m_ObjectHideFlags: 0
