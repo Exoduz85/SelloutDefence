@@ -4,7 +4,7 @@ using System.Net;
 using UnityEngine;
 
 namespace Core {
-    public class URLUtility : MonoBehaviour {
+    public class LoginData : MonoBehaviour {
         public static DateTime LastLogin { get; private set; }
 
         public static DateTime Now() {
