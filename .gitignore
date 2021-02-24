@@ -77,3 +77,6 @@ ProjectSettings/VersionControlSettings.asset
 ProjectSettings/VersionControlSettings.asset
 .vscode/settings.json
 Packages/packages-lock.json
+
+# Ignore all Jason files
+*.json
