@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemy{
+namespace EnemyWaypoints{
     
     [CreateAssetMenu]
     public class WaypointsPath : ScriptableObject

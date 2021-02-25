@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemy{
+namespace EnemyWaypoints{
     public class Waypoints : MonoBehaviour{
         [SerializeField] public WaypointsPath waypointsPath;
 

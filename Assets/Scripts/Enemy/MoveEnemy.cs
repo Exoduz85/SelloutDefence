@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using EnemyWaypoints;
 using UnityEngine;
 
 namespace Enemy{
@@ -12,25 +13,26 @@ namespace Enemy{
     
         private float initalTimer = 1f;
     
-        // Start is called before the first frame update
         void Start(){
-            //find the Waypoints gameobject that has the same path as this enemy type.
-            var waypointList = new List<Waypoints>();
-            waypointList = FindObjectsOfType<Waypoints>().ToList();
+            FindWaypoints();
+        }
+        
+        void Update(){
+            if (Time.time < initalTimer)
+                return;
+        
+            MoveToNextWaypoint();
+        }
+        
+        private void FindWaypoints(){
+            //find the Waypoints parent gameobject that has the same path as this enemy type.
+            var waypointList = FindObjectsOfType<Waypoints>().ToList();
             waypointList = waypointList.FindAll(waypoint => waypoint.waypointsPath == this.waypointPath);
             if (waypointList.Count == 0)
                 return;
             
             //get all the waypoints from that list, to traverse by the enemy
             waypoints = waypointList.First().GetComponentsInChildren<Transform>();
-        }
-
-        // Update is called once per frame
-        void Update(){
-            if (Time.time < initalTimer)
-                return;
-        
-            MoveToNextWaypoint();
         }
 
         private void MoveToNextWaypoint(){
