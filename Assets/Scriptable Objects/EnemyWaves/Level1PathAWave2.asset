@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d9102c469cfc5440958c5336129a48f, type: 3}
-  m_Name: Level1PathA
+  m_Name: Level1PathAWave2
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8120042348868839783, guid: f2a7383736f9e74448d9786eca56ed31, type: 3}
-  numberOfEnemies: 5
-  spawnInterval: 1
-  enemySpeed: 5
+  enemyPrefab: {fileID: 1707163508990716795, guid: 12f3e05a0359800499168ddab4e40557, type: 3}
+  numberOfEnemies: 10
+  spawnInterval: 0.5
+  enemySpeed: 10

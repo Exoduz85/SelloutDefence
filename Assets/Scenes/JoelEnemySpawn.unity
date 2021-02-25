@@ -1201,6 +1201,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8457682889770302784, guid: 6e4fff6f196ed814eb7e7b199693e7d8, type: 3}
+      propertyPath: _enemyWaves.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8457682889770302784, guid: 6e4fff6f196ed814eb7e7b199693e7d8, type: 3}
+      propertyPath: _enemyWaves.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9cffb41029b22b849a92cdd7192ee77c, type: 2}
+    - target: {fileID: 8457682889770302784, guid: 6e4fff6f196ed814eb7e7b199693e7d8, type: 3}
+      propertyPath: _enemyWaves.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 46ff83ea583d72549852c8d623408432, type: 2}
+    - target: {fileID: 8457682889770302784, guid: 6e4fff6f196ed814eb7e7b199693e7d8, type: 3}
+      propertyPath: _enemyWaves.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8df5134697882274cac35b2a375b7298, type: 2}
     - target: {fileID: 8457682889770302785, guid: 6e4fff6f196ed814eb7e7b199693e7d8, type: 3}
       propertyPath: m_RootOrder
       value: 4
