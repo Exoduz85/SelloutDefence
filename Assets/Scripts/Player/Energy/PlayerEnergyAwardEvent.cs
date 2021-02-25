@@ -1,8 +1,8 @@
 ﻿namespace Player.Energy {
-    public class UpdatePlayerEnergyEvent {
+    public class PlayerEnergyAwardEvent {
         public readonly int EnergyToUpdate;
 
-        public UpdatePlayerEnergyEvent(int energyToUpdate) {
+        public PlayerEnergyAwardEvent(int energyToUpdate) {
             this.EnergyToUpdate = energyToUpdate;
         }
     }

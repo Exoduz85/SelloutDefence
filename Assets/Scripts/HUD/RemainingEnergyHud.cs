@@ -6,21 +6,19 @@ using UnityEngine.UI;
 
 namespace HUD {
     public class RemainingEnergyHud : MonoBehaviour {
-
-        [SerializeField]
-        PlayerEnergy playerEnergy;
         Text energyText;
 
         void Start() {
             this.energyText = GetComponent<Text>();
+            EventBroker.Instance().SubscribeMessage<PlayerEnergyChangeEvent>(UpdateEnergyText);
         }
 
-        void Update() {
-            UpdateEnergyText();
+        void OnDestroy() {
+            EventBroker.Instance().UnsubscribeMessage<PlayerEnergyChangeEvent>(UpdateEnergyText);
         }
 
-        void UpdateEnergyText() {
-            this.energyText.text = this.playerEnergy.RemainingEnergy.ToString();
+        void UpdateEnergyText(PlayerEnergyChangeEvent energyAwardEvent) {
+            this.energyText.text = energyAwardEvent.RemainingEnergy.ToString();
         }
     }
 }

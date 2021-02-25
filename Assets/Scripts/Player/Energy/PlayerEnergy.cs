@@ -13,20 +13,23 @@ namespace Player.Energy {
 
         public int RemainingEnergy {
             get => this.remainingEnergy;
-            private set => this.remainingEnergy = Mathf.Clamp(value, 0, this.maxEnergy);
+            private set {
+                this.remainingEnergy = Mathf.Clamp(value, 0, this.maxEnergy);
+                EventBroker.Instance().SendMessage(new PlayerEnergyChangeEvent(this.RemainingEnergy));
+            }
         }
 
 
         void Start() {
-            EventBroker.Instance().SubscribeMessage<UpdatePlayerEnergyEvent>(UpdateEnergy);
+            EventBroker.Instance().SubscribeMessage<PlayerEnergyAwardEvent>(UpdateEnergy);
         }
 
         void OnDestroy() {
-            EventBroker.Instance().UnsubscribeMessage<UpdatePlayerEnergyEvent>(UpdateEnergy);
+            EventBroker.Instance().UnsubscribeMessage<PlayerEnergyAwardEvent>(UpdateEnergy);
         }
 
-        void UpdateEnergy(UpdatePlayerEnergyEvent energy) {
-            this.RemainingEnergy += energy.EnergyToUpdate;
+        void UpdateEnergy(PlayerEnergyAwardEvent energyAward) {
+            this.RemainingEnergy += energyAward.EnergyToUpdate;
             Debug.Log($"Remaining energy: {this.RemainingEnergy}");
         }
 
@@ -34,7 +37,8 @@ namespace Player.Energy {
             => this.RemainingEnergy;
 
 
-        public void RestoreState(object state)
-            => this.RemainingEnergy = (int) state;
+        public void RestoreState(object state) {
+            this.RemainingEnergy = (int) state;
+        }
     }
 }

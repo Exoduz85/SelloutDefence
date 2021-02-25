@@ -7,7 +7,6 @@ namespace Player.Energy {
     public class RefillTime : MonoBehaviour, ISavable {
         float myTime;
         float timeRemaining;
-        public Text energyText;
         public float energyFillCd = 120;
 
 
@@ -18,13 +17,33 @@ namespace Player.Energy {
 
         void Update() {
             this.myTime += Time.deltaTime;
-            if (this.myTime >= 1) {
-                this.timeRemaining--;
-                EventBroker.Instance().SendMessage(new UpdateEnergyTimeEvent(this.myTime));
-                this.myTime = 0;
+            if (CanUpdateTimer()) {
+                UpdateTimer();
+                if (CanAwardEnergy()) {
+                    AwardEnergy();
+                }
             }
         }
-        
+
+        void AwardEnergy() {
+            EventBroker.Instance().SendMessage(new PlayerEnergyAwardEvent(1));
+            this.timeRemaining = this.energyFillCd;
+        }
+
+        void UpdateTimer() {
+            this.timeRemaining--;
+            EventBroker.Instance().SendMessage(new UpdateEnergyTimeEvent(this.timeRemaining));
+            this.myTime = 0;
+        }
+
+        bool CanUpdateTimer() {
+            return this.myTime >= 1;
+        }
+
+        bool CanAwardEnergy() {
+            return this.timeRemaining <= 0;
+        }
+
         public object CaptureState()
             => this.timeRemaining;
 

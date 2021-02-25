@@ -1,5 +1,4 @@
-﻿using System;
-using EventBrokerFolder;
+﻿using EventBrokerFolder;
 using Player.Energy;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +17,7 @@ namespace HUD {
         }
 
         void UpdateTimeText(UpdateEnergyTimeEvent remainingTime) {
-            this.energyText.text = $"{Minutes(remainingTime.Timer)}:{Seconds(remainingTime.Timer)}";
+            this.energyText.text = $"{Minutes(remainingTime.Timer):00}:{Seconds(remainingTime.Timer):00}";
         }
 
         int Minutes(float timeRemaining) {
