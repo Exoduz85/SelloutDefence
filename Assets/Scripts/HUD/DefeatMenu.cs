@@ -8,14 +8,12 @@ namespace HUD {
         //Continue(costs 1 coin or smth) / Restart / MainMenu
 
         public int towerHealth;
-
-        public void OnDefeat() {
-            ShowMenu(gameObject);
-        }
-
-        public void ShowMenu(GameObject gameObject) {
+        
+        public void ShowDefeatMenu(GameObject gameObject) {
             gameObject.SetActive(!gameObject.activeSelf);
         }
 
+        public void OnDefeat() {
+        }
     }
 }
