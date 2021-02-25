@@ -484,6 +484,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1363221346}
   - component: {fileID: 1363221345}
+  - component: {fileID: 1363221347}
   m_Layer: 0
   m_Name: PlayerEnergy
   m_TagString: Untagged
@@ -503,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e13d3e64f284d1ea642cefee672e109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyFillCd: 120
+  energyFillCd: 300
   energyText: {fileID: 158348213}
 --- !u!4 &1363221346
 Transform:
@@ -519,6 +520,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363221347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363221344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef23b9ad612d69f47b59d21ef23914f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: ea0c5ed6-104e-4979-9217-39276cb3ce0b
 --- !u!1 &1834659727
 GameObject:
   m_ObjectHideFlags: 0
