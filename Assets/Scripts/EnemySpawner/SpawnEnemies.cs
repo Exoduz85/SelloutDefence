@@ -1,3 +1,4 @@
+using Enemy;
 using EnemySpawner;
 using UnityEngine;
 
@@ -21,7 +22,9 @@ public class SpawnEnemies : MonoBehaviour{
     
     void Update(){
         spawnTimer += Time.deltaTime;
-
+        
+        if (enemyNumber >= _numberOfEnemies)
+            return;
         if (spawnTimer >= _spawnInterval){
             spawnTimer = 0;
             SpawnEnemy();
@@ -29,9 +32,9 @@ public class SpawnEnemies : MonoBehaviour{
     }
 
     private void SpawnEnemy(){
-        if (enemyNumber > _numberOfEnemies)
-            return;
-        Debug.Log($"spawning new enemy: {enemyNumber}");
+        Debug.Log($"spawning new enemy: {enemyNumber+1}");
+        var newEnemy = Instantiate(_enemyPrefab);
+        newEnemy.GetComponent<MoveEnemy>().speed = _enemySpeed;
         enemyNumber++;
         
     }
