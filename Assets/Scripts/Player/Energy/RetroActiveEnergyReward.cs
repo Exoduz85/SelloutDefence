@@ -6,31 +6,42 @@ using UnityEngine;
 
 namespace Player.Energy {
     public class RetroActiveEnergyReward : MonoBehaviour {
-        [SerializeField]
-        RefillTime refill;
-
-
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.T)) {
-                StartCoroutine(TimeSinceLastLogin());
-            }
-
-            if (Input.GetKeyDown(KeyCode.B))
-                EventBroker.Instance().SendMessage(new PlayerEnergyAwardEvent(1));
-        }
-
-        IEnumerator TimeSinceLastLogin() {
+        public IEnumerator RetroActiveRefillAsync(float remainingTime, float refillCd) {
             yield return LoginData.GetTime();
             var lastLogin = LoginData.LastLogin;
             var now = LoginData.Now;
             var diff = now - lastLogin;
-
+            print($"Last login: {lastLogin} Now: {now}");
             var days = DaysOffline(diff);
             diff = MoreThanOneDayOffline(diff, now, lastLogin);
 
-            var energyToGive = ((days + diff.Hours) * 60 * 60 + diff.Minutes * 60 + diff.Seconds) / this.refill.energyFillCd;
-            EventBroker.Instance().SendMessage(new PlayerEnergyAwardEvent((int) energyToGive));
+            var totalSeconds = (days + diff.Hours) * 60 * 60 + diff.Minutes * 60 + diff.Seconds;
+            var energyToGive = (int) (totalSeconds / refillCd);
+            print($"tot seconds {totalSeconds} {energyToGive}");
+            CalculateRemainingTime(remainingTime, energyToGive, totalSeconds);
+            EventBroker.Instance().SendMessage(new PlayerEnergyAwardEvent(energyToGive));
         }
+
+        void CalculateRemainingTime(float remainingTime, float energyToGive, float totSeconds) {
+            if (energyToGive >= 10) {
+                this.RemainingTime = 300;
+                return;
+            }
+            // passed time: 06:43
+
+            //remaining time = 60 sec
+            var tot1 = totSeconds - remainingTime;
+
+            //passed time: 05:43
+            var tot2 = energyToGive * 300;
+
+            var tot3 = tot2 - tot1;
+            //passed time: 00:43
+            var tmp = 300 - tot3;
+            this.RemainingTime = tmp;
+        }
+
+        public float RemainingTime { get; private set; }
 
         static int DaysOffline(TimeSpan diff) {
             return diff.Days * 24;
@@ -46,8 +57,3 @@ namespace Player.Energy {
         }
     }
 }
-
-// print($"Energy to give: {energyToGive}");
-// print(Mathf.Abs(diff.Days));
-// print($"{diff.Hours}:{diff.Minutes}:{diff.Seconds}");
-// print(diff.Hours * 60 * 60 + diff.Minutes * 60 + diff.Seconds);

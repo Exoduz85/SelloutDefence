@@ -30,7 +30,7 @@ namespace Player.Energy {
 
         void UpdateEnergy(PlayerEnergyAwardEvent energyAward) {
             this.RemainingEnergy += energyAward.EnergyToUpdate;
-            Debug.Log($"Remaining energy: {this.RemainingEnergy}");
+            //Debug.Log($"Remaining energy: {this.RemainingEnergy}");
         }
 
         public object CaptureState()

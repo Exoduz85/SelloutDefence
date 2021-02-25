@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216716172}
   - component: {fileID: 216716171}
+  - component: {fileID: 216716173}
   m_Layer: 0
   m_Name: refill time
   m_TagString: Untagged
@@ -259,6 +260,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216716173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216716170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef23b9ad612d69f47b59d21ef23914f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 7b6e4c96-f8a7-4596-8a07-e8ea707a5ac0
 --- !u!1 &347176284
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +573,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b3b2f8902c4d8690db0c023cb2dd34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  refill: {fileID: 216716171}
 --- !u!4 &944781645
 Transform:
   m_ObjectHideFlags: 0

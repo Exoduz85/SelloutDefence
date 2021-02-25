@@ -1,4 +1,5 @@
-﻿using EventBrokerFolder;
+﻿using System.Collections;
+using EventBrokerFolder;
 using Saving;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,6 @@ namespace Player.Energy {
 
         void Start() {
             this.timeRemaining = this.energyFillCd;
-            print(this.timeRemaining);
         }
 
         void Update() {
@@ -47,7 +47,15 @@ namespace Player.Energy {
         public object CaptureState()
             => this.timeRemaining;
 
-        public void RestoreState(object state)
-            => this.timeRemaining = (float) state;
+        public void RestoreState(object state) {
+            this.timeRemaining = (float) state;
+            StartCoroutine(UpdateRemainingTime(this.timeRemaining));
+        }
+
+        IEnumerator UpdateRemainingTime(float remainingTimer) {
+            var retroEnergy = FindObjectOfType<RetroActiveEnergyReward>();
+            yield return retroEnergy.RetroActiveRefillAsync(remainingTimer, this.energyFillCd);
+            this.timeRemaining = retroEnergy.RemainingTime;
+        }
     }
 }
