@@ -2,7 +2,6 @@
 using EventBrokerFolder;
 using Saving;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Player.Energy {
     public class RefillTime : MonoBehaviour, ISavable {

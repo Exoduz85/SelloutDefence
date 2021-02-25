@@ -11,13 +11,11 @@ namespace Player.Energy {
             var lastLogin = LoginData.LastLogin;
             var now = LoginData.Now;
             var diff = now - lastLogin;
-            print($"Last login: {lastLogin} Now: {now}");
             var days = DaysOffline(diff);
             diff = MoreThanOneDayOffline(diff, now, lastLogin);
 
             var totalSeconds = (days + diff.Hours) * 60 * 60 + diff.Minutes * 60 + diff.Seconds;
             var energyToGive = (int) (totalSeconds / refillCd);
-            print($"tot seconds {totalSeconds} {energyToGive}");
             CalculateRemainingTime(remainingTime, energyToGive, totalSeconds);
             EventBroker.Instance().SendMessage(new PlayerEnergyAwardEvent(energyToGive));
         }
@@ -27,18 +25,11 @@ namespace Player.Energy {
                 this.RemainingTime = 300;
                 return;
             }
-            // passed time: 06:43
 
-            //remaining time = 60 sec
-            var tot1 = totSeconds - remainingTime;
-
-            //passed time: 05:43
-            var tot2 = energyToGive * 300;
-
-            var tot3 = tot2 - tot1;
-            //passed time: 00:43
-            var tmp = 300 - tot3;
-            this.RemainingTime = tmp;
+            var remaining = Mathf.Abs(totSeconds - remainingTime);
+            var totEnergyTime = energyToGive * 300;
+            var tot3 = totEnergyTime - remaining;
+            this.RemainingTime = tot3;
         }
 
         public float RemainingTime { get; private set; }
