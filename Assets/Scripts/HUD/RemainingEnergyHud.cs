@@ -7,19 +7,20 @@ using UnityEngine.UI;
 namespace HUD {
     public class RemainingEnergyHud : MonoBehaviour {
 
+        [SerializeField]
+        PlayerEnergy playerEnergy;
         Text energyText;
 
         void Start() {
             this.energyText = GetComponent<Text>();
-            EventBroker.Instance().SubscribeMessage<UpdatePlayerEnergyEvent>(UpdateEnergyText);
         }
 
-        void OnDestroy() {
-            EventBroker.Instance().UnsubscribeMessage<UpdatePlayerEnergyEvent>(UpdateEnergyText);
+        void Update() {
+            UpdateEnergyText();
         }
 
-        void UpdateEnergyText(UpdatePlayerEnergyEvent energyEvent) {
-            this.energyText.text = energyEvent.PlayerEnergy.ToString();
+        void UpdateEnergyText() {
+            this.energyText.text = this.playerEnergy.RemainingEnergy.ToString();
         }
     }
 }

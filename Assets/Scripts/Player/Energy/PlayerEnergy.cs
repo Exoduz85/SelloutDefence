@@ -1,4 +1,5 @@
-﻿using EventBrokerFolder;
+﻿using System;
+using EventBrokerFolder;
 using Saving;
 using UnityEngine;
 
@@ -8,7 +9,12 @@ namespace Player.Energy {
         [SerializeField]
         int maxEnergy;
 
-        int RemainingEnergy { get; set; }
+        int remainingEnergy;
+
+        public int RemainingEnergy {
+            get => this.remainingEnergy;
+            private set => this.remainingEnergy = Mathf.Clamp(value, 0, this.maxEnergy);
+        }
 
 
         void Start() {
@@ -20,8 +26,7 @@ namespace Player.Energy {
         }
 
         void UpdateEnergy(UpdatePlayerEnergyEvent energy) {
-            Mathf.Clamp(this.RemainingEnergy += energy.EnergyToUpdate, 0, this.maxEnergy);
-            EventBroker.Instance().SendMessage(new UpdatePlayerEnergyEvent(this.RemainingEnergy));
+            this.RemainingEnergy += energy.EnergyToUpdate;
             Debug.Log($"Remaining energy: {this.RemainingEnergy}");
         }
 

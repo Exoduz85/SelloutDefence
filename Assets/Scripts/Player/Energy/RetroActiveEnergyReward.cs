@@ -14,6 +14,9 @@ namespace Player.Energy {
             if (Input.GetKeyDown(KeyCode.T)) {
                 StartCoroutine(TimeSinceLastLogin());
             }
+
+            if (Input.GetKeyDown(KeyCode.B))
+                EventBroker.Instance().SendMessage(new UpdatePlayerEnergyEvent(1));
         }
 
         IEnumerator TimeSinceLastLogin() {
