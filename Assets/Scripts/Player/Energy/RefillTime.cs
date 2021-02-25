@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using EventBrokerFolder;
+﻿using EventBrokerFolder;
 using Saving;
 using UnityEngine;
 
@@ -12,6 +11,7 @@ namespace Player.Energy {
 
         void Start() {
             this.timeRemaining = this.energyFillCd;
+            EventBroker.Instance().SubscribeMessage<EventGetRetroActiveData>(UpdateRetroActiveData);
         }
 
         void Update() {
@@ -25,13 +25,13 @@ namespace Player.Energy {
         }
 
         void AwardEnergy() {
-            EventBroker.Instance().SendMessage(new PlayerEnergyAwardEvent(1));
+            EventBroker.Instance().SendMessage(new EventEnergyAward(1));
             this.timeRemaining = this.energyFillCd;
         }
 
         void UpdateTimer() {
             this.timeRemaining--;
-            EventBroker.Instance().SendMessage(new UpdateEnergyTimeEvent(this.timeRemaining));
+            EventBroker.Instance().SendMessage(new EventUpdateEnergyTime(this.timeRemaining));
             this.myTime = 0;
         }
 
@@ -48,13 +48,28 @@ namespace Player.Energy {
 
         public void RestoreState(object state) {
             this.timeRemaining = (float) state;
-            StartCoroutine(UpdateRemainingTime(this.timeRemaining));
         }
 
-        IEnumerator UpdateRemainingTime(float remainingTimer) {
-            var retroEnergy = FindObjectOfType<RetroActiveEnergyReward>();
-            yield return retroEnergy.RetroActiveRefillAsync(remainingTimer, this.energyFillCd);
-            this.timeRemaining = retroEnergy.RemainingTime;
+        void UpdateRetroActiveData(EventGetRetroActiveData totSeconds) {
+            var energyToGive = (int) (totSeconds.TotalSeconds / this.energyFillCd);
+            EventBroker.Instance().SendMessage(new EventEnergyAward(energyToGive));
+            CalculateRemainingTime(energyToGive, totSeconds.TotalSeconds);
+        }
+
+        void CalculateRemainingTime(float energyToGive, float totSeconds) {
+            if (energyToGive >= 10) {
+                this.timeRemaining = this.energyFillCd;
+                return;
+            }
+
+            var remaining = Mathf.Abs(totSeconds - this.timeRemaining);
+            var totEnergyTime = energyToGive * this.energyFillCd;
+            var tot = remaining;
+            if (totEnergyTime > 0) {
+                tot = Mathf.Abs(remaining - totEnergyTime);
+            }
+
+            this.timeRemaining = tot;
         }
     }
 }

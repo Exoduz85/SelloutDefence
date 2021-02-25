@@ -10,15 +10,15 @@ namespace HUD {
 
         void Start() {
             this.energyText = GetComponent<Text>();
-            EventBroker.Instance().SubscribeMessage<PlayerEnergyChangeEvent>(UpdateEnergyText);
+            EventBroker.Instance().SubscribeMessage<EventEnergyChange>(UpdateEnergyText);
         }
 
         void OnDestroy() {
-            EventBroker.Instance().UnsubscribeMessage<PlayerEnergyChangeEvent>(UpdateEnergyText);
+            EventBroker.Instance().UnsubscribeMessage<EventEnergyChange>(UpdateEnergyText);
         }
 
-        void UpdateEnergyText(PlayerEnergyChangeEvent energyAwardEvent) {
-            this.energyText.text = energyAwardEvent.RemainingEnergy.ToString();
+        void UpdateEnergyText(EventEnergyChange energyAward) {
+            this.energyText.text = energyAward.RemainingEnergy.ToString();
         }
     }
 }
