@@ -9,14 +9,14 @@ namespace HUD {
 
         void Start() {
             this.energyText = GetComponent<Text>();
-            EventBroker.Instance().SubscribeMessage<UpdateEnergyTimeEvent>(UpdateTimeText);
+            EventBroker.Instance().SubscribeMessage<EventUpdateEnergyTime>(UpdateTimeText);
         }
 
         void OnDestroy() {
-            EventBroker.Instance().UnsubscribeMessage<UpdateEnergyTimeEvent>(UpdateTimeText);
+            EventBroker.Instance().UnsubscribeMessage<EventUpdateEnergyTime>(UpdateTimeText);
         }
 
-        void UpdateTimeText(UpdateEnergyTimeEvent remainingTime) {
+        void UpdateTimeText(EventUpdateEnergyTime remainingTime) {
             this.energyText.text = $"{Minutes(remainingTime.Timer):00}:{Seconds(remainingTime.Timer):00}";
         }
 

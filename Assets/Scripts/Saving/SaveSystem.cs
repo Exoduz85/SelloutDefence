@@ -8,7 +8,7 @@ namespace Saving {
     public class SaveSystem : MonoBehaviour {
         const string SaveFileName = "/SelloutDefence.sav";
 
-        public IEnumerator Save() {
+        public IEnumerator SaveAsync() {
             var path = GetFilePath(SaveFileName);
             print($"Saving {path}");
             var state = LoadFile(path);
@@ -16,7 +16,7 @@ namespace Saving {
             SaveFile(SaveFileName, state);
         }
 
-        public IEnumerator Load() {
+        public IEnumerator LoadAsync() {
             var path = GetFilePath(SaveFileName);
             print($"Loading {path}");
             yield return RestoreState(LoadFile(path));

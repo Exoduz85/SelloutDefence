@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Globalization;
-using System.Net;
 using Saving;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -28,7 +27,7 @@ namespace Core {
                 StartCoroutine(SaveGame());
 
             if (Input.GetKeyDown(KeyCode.L))
-                StartCoroutine(FindObjectOfType<SaveSystem>().Load());
+                StartCoroutine(FindObjectOfType<SaveSystem>().LoadAsync());
             
             if (Input.GetKeyDown(KeyCode.G))
                 StartCoroutine(GetTime());
@@ -37,7 +36,7 @@ namespace Core {
         IEnumerator SaveGame() {
             var saveSystem = FindObjectOfType<SaveSystem>();
             yield return GetTime();
-            yield return saveSystem.Save();
+            yield return saveSystem.SaveAsync();
         }
 
         public static IEnumerator GetTime() {

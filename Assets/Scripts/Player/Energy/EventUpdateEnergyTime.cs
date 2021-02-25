@@ -1,8 +1,8 @@
 ﻿namespace Player.Energy {
-    public class UpdateEnergyTimeEvent {
+    public class EventUpdateEnergyTime {
         public readonly float Timer;
 
-        public UpdateEnergyTimeEvent(float timer) {
+        public EventUpdateEnergyTime(float timer) {
             this.Timer = timer;
         }
     }
