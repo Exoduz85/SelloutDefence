@@ -7,18 +7,5 @@ namespace HUD {
         public void Toggle(GameObject gameObject) {
             gameObject.SetActive(!gameObject.activeSelf);
         }
-
-        public void RestartButton() {
-            
-        }
-
-        public void MainMenuButton() {
-            
-        }
-
-        public void CancelButton() {
-            
-        }
-        
     }
 }
