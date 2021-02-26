@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Enemy{
+namespace EnemyWaypoints{
     
     [CreateAssetMenu]
     public class WaypointsPath : ScriptableObject
@@ -10,6 +10,6 @@ namespace Enemy{
             PathC
         
         }
-        [SerializeField] private PathType pathtype;
+        [SerializeField] public PathType pathtype;
     }
 }
