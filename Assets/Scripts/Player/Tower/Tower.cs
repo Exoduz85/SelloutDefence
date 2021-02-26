@@ -7,27 +7,15 @@ using Unity.Mathematics;
 using UnityEngine;
 
 namespace Player.Tower{
-    public class Tower : MonoBehaviour, ITower {
-        [SerializeField] TestCreateTower asd;
-        [SerializeField] private string type;
-        [SerializeField] private float damage;
-        [SerializeField] private float attackTime;
-        [SerializeField] private float costRequiredToBuy;
+    public class Tower : MonoBehaviour, ITower{
+        [SerializeField] private TowerData towerData;
         [SerializeField] private List<GameObject> targets = new List<GameObject>();
         [SerializeField] private GameObject target;
-        [SerializeField] private GameObject projectilePrefab;
-        [SerializeField] private float projectileSpeed;
-        [SerializeField] private float elapsedTime;
+        private float elapsedTime;
         private bool canAttack => !this.IsChargingAttack && target != null;
-        bool IsChargingAttack => this.elapsedTime < this.attackTime;
+        bool IsChargingAttack => this.elapsedTime < towerData.attackSpeed;
         public void SetUp(TowerData towerData){
-            this.name = towerData.name;
-            this.type = towerData.towerType;
-            this.damage = towerData.damage;
-            this.attackTime = towerData.attackSpeed;
-            this.costRequiredToBuy = towerData.costRequiredToBuy;
-            this.projectilePrefab = towerData.projectilePrefab;
-            this.projectileSpeed = towerData.projectileSpeed;
+            this.towerData = towerData;
             this.gameObject.AddComponent<SpriteRenderer>().sprite = towerData.mainSprite;
             this.gameObject.AddComponent<SphereCollider>().radius = towerData.attackRange;
             this.gameObject.GetComponent<SphereCollider>().isTrigger = true;
@@ -43,9 +31,9 @@ namespace Player.Tower{
             this.elapsedTime += Time.deltaTime;
         }
         public void Attack(){
-            var projectile = Instantiate(this.projectilePrefab, this.transform.position, quaternion.identity, this.transform);
-            EventBroker.Instance().SendMessage(new EventSpawnBullet(true, target.transform.position, this.projectileSpeed, this.damage));
-            this.elapsedTime -= this.attackTime;
+            var projectile = Instantiate(towerData.projectilePrefab, this.transform.position, quaternion.identity, this.transform);
+            EventBroker.Instance().SendMessage(new EventSpawnBullet(true, target.transform.position, towerData.projectileSpeed, towerData.damage));
+            this.elapsedTime -= towerData.attackRange;
         }
         void UpdateTarget(){
             if (targets == null) return;
