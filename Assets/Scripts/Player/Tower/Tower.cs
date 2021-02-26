@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Core;
 using Enemy;
+using EventBrokerFolder;
 using Unity.Mathematics;
 using UnityEngine;
 
 namespace Player.Tower{
-    public class Tower : MonoBehaviour, ITower{
+    public class Tower : MonoBehaviour, ITower {
+        [SerializeField] TestCreateTower asd;
         [SerializeField] private string type;
         [SerializeField] private float damage;
         [SerializeField] private float attackTime;
@@ -42,8 +44,7 @@ namespace Player.Tower{
         }
         public void Attack(){
             var projectile = Instantiate(this.projectilePrefab, this.transform.position, quaternion.identity, this.transform);
-            projectile.GetComponent<Projectile>().StartMove(target.transform.position, this.projectileSpeed);
-            target.GetComponent<Health>().TakeDamage(this.damage);
+            EventBroker.Instance().SendMessage(new EventSpawnBullet(true, target.transform.position, this.projectileSpeed, this.damage));
             this.elapsedTime -= this.attackTime;
         }
         void UpdateTarget(){

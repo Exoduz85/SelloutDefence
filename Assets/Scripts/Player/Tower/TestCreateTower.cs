@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 
 namespace Player.Tower{
-    public class TestCreateTower : MonoBehaviour{
+    [Serializable]
+    public class TestCreateTower{
         public TowerData TowerData;
         private void Start(){
             var tower = new GameObject();
