@@ -1,4 +1,5 @@
 using System;
+using EventBrokerFolder;
 using UnityEngine;
 
 namespace Core{
@@ -10,9 +11,10 @@ namespace Core{
             //throw new NotImplementedException();
         }
 
-        public void TakeDamage(float damage){
-            this.health -= damage;
-            if (this.IsDead) {
+        public void TakeDamage(EventTakeDamage takeDamage){
+            this.health -= takeDamage.damageToDeal;
+            
+            if (takeDamage.isDead) {
                 Destroy(this.gameObject);
             }
         }

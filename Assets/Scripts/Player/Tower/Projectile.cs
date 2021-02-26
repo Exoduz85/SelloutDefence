@@ -37,5 +37,9 @@ namespace Player.Tower{
                 Destroy(this.gameObject);
             }
         }
+
+        void DealDamage(EventTakeDamage damage) {
+            
+        }
     }
 }
