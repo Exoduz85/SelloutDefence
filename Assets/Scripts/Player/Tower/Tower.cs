@@ -58,7 +58,6 @@ namespace Player.Tower {
         }
 
         public void OnTriggerEnter(Collider other) {
-            Debug.Log("enemy detected");
             if (other.CompareTag("Enemy")) {
                 targets.Add(other.gameObject);
             }

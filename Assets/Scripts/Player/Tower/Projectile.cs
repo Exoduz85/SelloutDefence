@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Player.Tower{
     public class Projectile : MonoBehaviour{
         public bool move = false;
-        private Vector3 to;
+        [SerializeField]private Vector3 to;
         private float speed;
         float damage;
         void Start() {
@@ -20,9 +20,11 @@ namespace Player.Tower{
         }
 
         private void Update(){
-            if (!move) return;
-            float angle = Mathf.Atan2(this.transform.position.y - to.y, this.transform.position.x - to.x) - 90 * Mathf.Rad2Deg;
-            this.transform.rotation = quaternion.Euler(0,0, angle);
+            if (!move) 
+                return;
+            
+            //float angle = Mathf.Atan2(this.transform.position.y - to.y, this.transform.position.x - to.x) - 90 * Mathf.Rad2Deg;
+            //this.transform.rotation = quaternion.Euler(0,0, angle);
             this.transform.position = Vector3.MoveTowards(this.transform.position, to, speed * Time.deltaTime);
         }
         void StartMove(EventSpawnBullet spawnBullet){
@@ -32,8 +34,8 @@ namespace Player.Tower{
             this.move = spawnBullet.canMove;
         }
         public void OnTriggerEnter(Collider other){
-            if (other.GetComponent<Targetable>()){
-                
+            if (other.CompareTag("Enemy")){
+                Debug.Log("hit an enemy");
                 Destroy(this.gameObject);
             }
         }
