@@ -24,6 +24,7 @@ namespace Player.Tower {
 
         private void Start(){
             _isTargetNull = target == null;
+            SetUp(towerData);
         }
 
         public void SetUp(TowerData towerData) {
@@ -59,16 +60,17 @@ namespace Player.Tower {
         }
 
         public void OnTriggerEnter(Collider other) {
-            if (other.GetComponent<Targetable>()) {
-                targets.Add(other.GetComponent<Targetable>().thisGuy);
+            Debug.Log("enemy detected");
+            if (other.CompareTag("Enemy")) {
+                targets.Add(other.gameObject);
             }
         }
 
         public void OnTriggerExit(Collider other) {
-            if (!other.GetComponent<Targetable>()) 
+            if (!other.CompareTag("Enemy")) 
                 return;
             
-            if (other.gameObject == this.target.gameObject) {
+            if (target != null && other.gameObject == this.target.gameObject) {
                 this.target = null;
             }
 
