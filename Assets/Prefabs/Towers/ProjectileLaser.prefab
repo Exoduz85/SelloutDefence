@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2517567981168106065}
   - component: {fileID: 2707913861024767632}
   - component: {fileID: 2016036895533517148}
-  - component: {fileID: 163077992083703831}
   - component: {fileID: 6007658059811854168}
+  - component: {fileID: 7703451217341807228}
   m_Layer: 0
   m_Name: ProjectileLaser
   m_TagString: Untagged
@@ -98,20 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: 0
-  to: {x: 0, y: 0, z: 0}
---- !u!65 &163077992083703831
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7302567784863897187}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12217415, y: 0.48174822, z: 0.2}
-  m_Center: {x: -0.00642607, y: 0.2279082, z: 0}
+  to: {fileID: 0}
 --- !u!54 &6007658059811854168
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,3 +115,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7703451217341807228
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302567784863897187}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.108076416, y: 0.45230186, z: 0.2}
+  m_Center: {x: -0.0021154098, y: 0.19038594, z: 0}

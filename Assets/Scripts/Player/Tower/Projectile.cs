@@ -1,6 +1,4 @@
-using System;
 using Core;
-using Enemy;
 using EventBrokerFolder;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,9 +6,9 @@ using UnityEngine;
 namespace Player.Tower{
     public class Projectile : MonoBehaviour{
         public bool move = false;
-        [SerializeField]private Vector3 to;
-        private float speed;
-        float damage;
+        [SerializeField]public Transform to;
+        public float speed;
+        public float damage;
         void Start() {
             EventBroker.Instance().SubscribeMessage<EventSpawnBullet>(StartMove);
         }
@@ -23,11 +21,15 @@ namespace Player.Tower{
             if (!move) 
                 return;
             
-            //float angle = Mathf.Atan2(this.transform.position.y - to.y, this.transform.position.x - to.x) - 90 * Mathf.Rad2Deg;
-            //this.transform.rotation = quaternion.Euler(0,0, angle);
-            this.transform.position = Vector3.MoveTowards(this.transform.position, to, speed * Time.deltaTime);
+            float angle = Mathf.Atan2(this.transform.position.y - to.position.y, this.transform.position.x - to.position.x) - 90 * Mathf.Rad2Deg;
+            this.transform.rotation = quaternion.Euler(0,0, angle);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, to.position, speed * Time.deltaTime);
         }
         void StartMove(EventSpawnBullet spawnBullet){
+            //only listen to messages from your own parent!
+            //if (spawnBullet.parentTower != transform.parent)
+                //return;
+            
             this.to = spawnBullet.to;
             this.speed = spawnBullet.speed;
             this.damage = spawnBullet.damage;
@@ -35,7 +37,6 @@ namespace Player.Tower{
         }
         public void OnTriggerEnter(Collider other){
             if (other.CompareTag("Enemy")){
-                Debug.Log("hit an enemy");
                 Destroy(this.gameObject);
             }
         }
