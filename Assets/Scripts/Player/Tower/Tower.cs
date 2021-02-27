@@ -18,12 +18,10 @@ namespace Player.Tower {
         private GameObject target;
 
         private float _elapsedTime;
-        private bool _isTargetNull;
         private bool CanAttack => this.ReadyToAttack && target != null;
         private bool ReadyToAttack => this._elapsedTime > towerData.attackSpeed;
 
         private void Start(){
-            _isTargetNull = target == null;
             SetUp(towerData);
         }
 
@@ -37,7 +35,7 @@ namespace Player.Tower {
         private void Update() {
             UpdateTime();
             
-            if (targets != null && _isTargetNull) 
+            if (targets.Count >0 && target == null) 
                 UpdateTarget();
             
             if (this.CanAttack) 
@@ -51,7 +49,7 @@ namespace Player.Tower {
         public void Attack() {
             Instantiate(towerData.projectilePrefab, this.transform.position, quaternion.identity, this.transform);
             EventBroker.Instance().SendMessage(new EventSpawnBullet(true, target.transform.position, towerData.projectileSpeed, towerData.damage));
-            this._elapsedTime -= towerData.attackRange;
+            this._elapsedTime = 0;
         }
 
         void UpdateTarget() {

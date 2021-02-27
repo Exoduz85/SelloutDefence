@@ -61,6 +61,7 @@ namespace EnemySpawner{
         private void SpawnEnemy(){
             var newEnemy = Instantiate(_wavesList[waveNumber].EnemyPrefab, transform.position, Quaternion.identity, transform);
             newEnemy.GetComponent<MoveEnemy>().speed = _wavesList[waveNumber].EnemySpeed;
+            newEnemy.name += enemyInWaveNumber;
         }
     }
 }
