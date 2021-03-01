@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserTower (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2678410343308933246, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3179d63780ef546ba9b5fe1f5ef71290, type: 2}
     - target: {fileID: 2678410343308933247, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -191,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserTower (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2678410343308933246, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3179d63780ef546ba9b5fe1f5ef71290, type: 2}
     - target: {fileID: 2678410343308933247, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
       propertyPath: m_RootOrder
       value: 9
