@@ -49,14 +49,7 @@ namespace Player.Tower {
         public void Attack() {
             var instance = Instantiate(towerData.projectilePrefab, this.transform.position, quaternion.identity, this.transform);
             var projectile = instance.GetComponent<Projectile>();
-            
-            //seems like the message system is too slow. also problems with messages from other towers.
-            //better set the properties directly.
-            //EventBroker.Instance().SendMessage(new EventSpawnBullet(this.transform, true, target.transform, towerData.projectileSpeed, towerData.damage));
-            projectile.to = target.transform;
-            projectile.speed = towerData.projectileSpeed;
-            projectile.damage = towerData.damage;
-            projectile.move = true;
+            projectile.StartMove(target.transform, towerData.projectileSpeed, towerData.damage, true);
             this._elapsedTime = 0;
         }
 
