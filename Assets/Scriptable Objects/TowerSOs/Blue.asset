@@ -14,10 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerType: Ground
   attackSpeed: 1
-  attackRange: 1.5
+  attackRange: 5
   damage: 5
   costRequiredToBuy: 10
-  mainSprite: {fileID: 21300000, guid: 765c90dc13244409494181ffbfb70989, type: 3}
   towerAddon: {fileID: 11400000, guid: a984fc92890884c4fb09b0715bf6aa54, type: 2}
   projectileSpeed: 4
   projectilePrefab: {fileID: 7302567784863897187, guid: 07ed7c318202543978bd179d8d60ca56, type: 3}

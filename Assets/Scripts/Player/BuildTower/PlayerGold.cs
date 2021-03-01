@@ -1,4 +1,5 @@
 ﻿using System;
+using EventBrokerFolder;
 using UnityEngine;
 
 namespace Player.BuildTower {
@@ -7,6 +8,15 @@ namespace Player.BuildTower {
 
         void Start() {
             this.Gold = 30;
+            EventBroker.Instance().SubscribeMessage<EventUpdatePlayerGold>(UpdateGold);
+        }
+
+        void OnDestroy() {
+            EventBroker.Instance().UnsubscribeMessage<EventUpdatePlayerGold>(UpdateGold);
+        }
+
+        void UpdateGold(EventUpdatePlayerGold gold) {
+            this.Gold += gold.amount;
         }
     }
 }

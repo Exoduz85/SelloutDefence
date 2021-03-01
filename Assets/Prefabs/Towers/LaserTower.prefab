@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e9a252d585e49459e5bd6bd40ca98d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: 3179d63780ef546ba9b5fe1f5ef71290, type: 2}
+  towerData: {fileID: 0}
   targets: []
   target: {fileID: 0}

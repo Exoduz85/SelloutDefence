@@ -1,6 +1,4 @@
-﻿using System;
-using Player.Tower;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Player.BuildTower {
@@ -28,17 +26,18 @@ namespace Player.BuildTower {
             }
         }
 
-        public void AssignAddon(TowerData towerData) {
-            if (this.playerGold.Gold < towerData.costRequiredToBuy) {
+        public void AssignAddon(Tower.Tower tower) {
+            if (this.playerGold.Gold < tower.towerData.costRequiredToBuy) {
                 print("Not enough gold for purchase");
+                return;
             }
 
-            //TODO instantiate the tower prefab
-            this.playerGold.Gold -= towerData.costRequiredToBuy;
-            print($"Tower purchased for {towerData.costRequiredToBuy}, gold left: {this.playerGold.Gold}");
+            Instantiate(tower, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
+            this.playerGold.Gold -= tower.towerData.costRequiredToBuy;
+            print($"Tower purchased for {tower.towerData.costRequiredToBuy}, gold left: {this.playerGold.Gold}");
             var tileMap = GetComponent<Tilemap>();
             var cell = tileMap.WorldToCell(new Vector3(this.position.x, this.position.y, this.position.z));
-            this.addons.SetTile(cell, towerData.towerAddon);
+            this.addons.SetTile(cell, tower.towerData.towerAddon);
         }
     }
 }

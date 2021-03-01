@@ -1,4 +1,6 @@
 using Core;
+using EventBrokerFolder;
+using Player.BuildTower;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -30,6 +32,7 @@ namespace Player.Tower{
         }
         public void OnTriggerEnter(Collider other){
             if (other.CompareTag("Enemy")){
+                EventBroker.Instance().SendMessage(new EventUpdatePlayerGold(5));
                 Destroy(this.gameObject);
                 Destroy(other.gameObject);
             }
