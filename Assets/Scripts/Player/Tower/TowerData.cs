@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Player.Tower{
     [CreateAssetMenu(fileName = "New Tower Data", menuName = "Tower Data/New tower data")]
@@ -9,6 +10,7 @@ namespace Player.Tower{
         public float damage;
         public float costRequiredToBuy;
         public Sprite mainSprite;
+        public TileBase towerAddon;
         public float projectileSpeed;
         public GameObject projectilePrefab;
     }
