@@ -28,6 +28,11 @@ namespace InAppPurchases {
                 // Begin to configure our connection to Purchasing
                 InitializePurchasing();
             }
+            test();
+        }
+
+        void test() {
+            FindObjectOfType<IAPButton>().productId = "TestID";
         }
 
         public void InitializePurchasing() {
