@@ -16,7 +16,7 @@ namespace Core {
         /// <summary>
         /// Has to be called in a Coroutine together with GetTime
         /// </summary>
-        public static DateTime Now { get; set; }
+        public static DateTime Now { get; private set; }
 
         void Start() {
             StartCoroutine(GetTime());

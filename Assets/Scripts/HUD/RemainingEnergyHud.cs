@@ -1,5 +1,4 @@
-﻿using System;
-using EventBrokerFolder;
+﻿using EventBrokerFolder;
 using Player.Energy;
 using UnityEngine;
 using UnityEngine.UI;
