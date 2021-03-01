@@ -4,7 +4,15 @@ using UnityEngine;
 
 namespace Player.BuildTower {
     public class PlayerGold : MonoBehaviour {
-        public int Gold { get; set; }
+        int gold;
+
+        public int Gold {
+            get => this.gold;
+            set {
+                this.gold = value;
+                EventBroker.Instance().SendMessage(new EventGetGold(this.gold));
+            }
+        }
 
         void Start() {
             this.Gold = 30;
