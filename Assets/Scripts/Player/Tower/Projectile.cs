@@ -12,6 +12,12 @@ namespace Player.Tower{
             if (!move) 
                 return;
             
+            //enemy has already been destroyed by a fellow projectile
+            if (to == null){
+                Destroy(this.gameObject);
+                return;
+            }
+            
             float angle = Mathf.Atan2(this.transform.position.y - to.position.y, this.transform.position.x - to.position.x) - 90 * Mathf.Rad2Deg;
             this.transform.rotation = quaternion.Euler(0,0, angle);
             this.transform.position = Vector3.MoveTowards(this.transform.position, to.position, speed * Time.deltaTime);
@@ -25,6 +31,7 @@ namespace Player.Tower{
         public void OnTriggerEnter(Collider other){
             if (other.CompareTag("Enemy")){
                 Destroy(this.gameObject);
+                Destroy(other.gameObject);
             }
         }
 

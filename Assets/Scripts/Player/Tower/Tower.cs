@@ -34,12 +34,22 @@ namespace Player.Tower {
 
         private void Update() {
             UpdateTime();
+
+            RemoveDeadEnemies();
             
             if (targets.Count >0 && target == null) 
                 UpdateTarget();
             
             if (this.CanAttack) 
                 Attack();
+        }
+
+        private void RemoveDeadEnemies(){
+            for (var i = targets.Count - 1; i >= 0; i--){
+                if (targets[i] == null){
+                    targets.Remove(targets[i]);
+                }
+            }
         }
 
         public void UpdateTime() {
