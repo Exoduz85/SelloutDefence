@@ -1,5 +1,4 @@
 using Core;
-using EventBrokerFolder;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -9,14 +8,6 @@ namespace Player.Tower{
         [SerializeField]public Transform to;
         public float speed;
         public float damage;
-        void Start() {
-            EventBroker.Instance().SubscribeMessage<EventSpawnBullet>(StartMove);
-        }
-
-        void OnDestroy() {
-            EventBroker.Instance().UnsubscribeMessage<EventSpawnBullet>(StartMove);
-        }
-
         private void Update(){
             if (!move) 
                 return;
@@ -25,15 +16,11 @@ namespace Player.Tower{
             this.transform.rotation = quaternion.Euler(0,0, angle);
             this.transform.position = Vector3.MoveTowards(this.transform.position, to.position, speed * Time.deltaTime);
         }
-        void StartMove(EventSpawnBullet spawnBullet){
-            //only listen to messages from your own parent!
-            //if (spawnBullet.parentTower != transform.parent)
-                //return;
-            
-            this.to = spawnBullet.to;
-            this.speed = spawnBullet.speed;
-            this.damage = spawnBullet.damage;
-            this.move = spawnBullet.canMove;
+        public void StartMove(Transform targetTransform, float projectileSpeed, float projectileDamage, bool canMove){
+            this.to = targetTransform;
+            this.speed = projectileSpeed;
+            this.damage = projectileDamage;
+            this.move = canMove;
         }
         public void OnTriggerEnter(Collider other){
             if (other.CompareTag("Enemy")){
