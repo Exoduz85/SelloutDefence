@@ -5,21 +5,11 @@ using UnityEngine;
 namespace Player.Energy {
     public class PlayerEnergy : MonoBehaviour, ISavable {
         [SerializeField]
-        int maxEnergy;
-
-        int remainingEnergy;
-
-        int RemainingEnergy {
-            get => this.remainingEnergy;
-            set {
-                this.remainingEnergy = Mathf.Clamp(value, 0, this.maxEnergy);
-                EventBroker.Instance().SendMessage(new EventEnergyChange(this.RemainingEnergy));
-            }
-        }
-
+        Energy energy;
 
         void Start() {
             EventBroker.Instance().SubscribeMessage<EventEnergyAward>(UpdateEnergy);
+            print(this.energy.RemainingEnergy);
         }
 
         void OnDestroy() {
@@ -27,15 +17,15 @@ namespace Player.Energy {
         }
 
         void UpdateEnergy(EventEnergyAward energyAward) {
-            this.RemainingEnergy += energyAward.EnergyToUpdate;
+            this.energy.RemainingEnergy += energyAward.EnergyToUpdate;
         }
 
         public object CaptureState()
-            => this.RemainingEnergy;
+            => this.energy.RemainingEnergy;
 
 
         public void RestoreState(object state) {
-            this.RemainingEnergy = (int) state;
+            this.energy.RemainingEnergy = (int) state;
         }
     }
 }

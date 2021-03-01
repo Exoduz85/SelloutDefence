@@ -11,7 +11,7 @@ namespace Player.Energy {
 
         void Start() {
             this.timeRemaining = this.energyFillCd;
-            EventBroker.Instance().SubscribeMessage<EventGetRetroActiveData>(UpdateRetroActiveData);
+            
         }
 
         void Update() {
@@ -19,13 +19,13 @@ namespace Player.Energy {
             if (CanUpdateTimer()) {
                 UpdateTimer();
                 if (CanAwardEnergy()) {
-                    AwardEnergy();
+                    AwardEnergy(1);
                 }
             }
         }
 
-        void AwardEnergy() {
-            EventBroker.Instance().SendMessage(new EventEnergyAward(1));
+        void AwardEnergy(int energyToAward) {
+            EventBroker.Instance().SendMessage(new EventEnergyAward(energyToAward));
             this.timeRemaining = this.energyFillCd;
         }
 
@@ -48,11 +48,12 @@ namespace Player.Energy {
 
         public void RestoreState(object state) {
             this.timeRemaining = (float) state;
+            EventBroker.Instance().SubscribeMessage<EventGetRetroActiveData>(UpdateRetroActiveData);
         }
 
         void UpdateRetroActiveData(EventGetRetroActiveData totSeconds) {
             var energyToGive = (int) (totSeconds.TotalSeconds / this.energyFillCd);
-            EventBroker.Instance().SendMessage(new EventEnergyAward(energyToGive));
+            AwardEnergy(energyToGive);
             CalculateRemainingTime(energyToGive, totSeconds.TotalSeconds);
         }
 

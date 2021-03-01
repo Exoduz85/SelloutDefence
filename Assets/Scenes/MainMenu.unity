@@ -152,6 +152,7 @@ Transform:
   m_Children:
   - {fileID: 1397194370}
   - {fileID: 1906079101}
+  - {fileID: 2004186032}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -415,7 +416,6 @@ GameObject:
   m_Component:
   - component: {fileID: 654740672}
   - component: {fileID: 654740675}
-  - component: {fileID: 654740676}
   - component: {fileID: 654740677}
   m_Layer: 5
   m_Name: Energy
@@ -459,19 +459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyFillCd: 300
---- !u!114 &654740676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654740671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e13d3e64f284d1ea642cefee672e109, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxEnergy: 10
 --- !u!114 &654740677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1906079101}
   - component: {fileID: 1906079102}
+  - component: {fileID: 1906079103}
   m_Layer: 0
   m_Name: LoginData
   m_TagString: Untagged
@@ -821,6 +809,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8920ee790f4649981ea2e810f3fc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1906079103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906079100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef23b9ad612d69f47b59d21ef23914f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 15fbf3b5-37fc-494f-895a-04860d62de67
 --- !u!1 &1944394556
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,15 +919,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1944394558}
-        m_TargetAssemblyTypeName: HUD.LoadScene, Assembly-CSharp
-        m_MethodName: LoadSceneEvent
+        m_TargetAssemblyTypeName: HUD.PlayGame, Assembly-CSharp
+        m_MethodName: Play
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: GameScene
+          m_StringArgument: AlexScene
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1944394558}
+        m_TargetAssemblyTypeName: HUD.PlayGame, Assembly-CSharp
+        m_MethodName: ConsumeEnergy
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: fee685e86ae4d664db8f128d1188873f, type: 2}
+          m_ObjectArgumentAssemblyTypeName: Player.Energy.Energy, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1944394560
@@ -967,6 +980,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944394556}
   m_CullTransparentMesh: 1
+--- !u!1 &2004186031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2004186032}
+  - component: {fileID: 2004186033}
+  - component: {fileID: 2004186034}
+  m_Layer: 0
+  m_Name: PlayerEnergy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2004186032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004186031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 138741599}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2004186033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004186031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e13d3e64f284d1ea642cefee672e109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energy: {fileID: 11400000, guid: fee685e86ae4d664db8f128d1188873f, type: 2}
+--- !u!114 &2004186034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004186031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef23b9ad612d69f47b59d21ef23914f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueID: 26e695b0-e3f7-4eb5-afe0-4f562bbd6a3c
 --- !u!1 &2049558436
 GameObject:
   m_ObjectHideFlags: 0
