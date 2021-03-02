@@ -38,6 +38,7 @@ namespace Ads {
                 if(placementId == Rewarded) { //Logic for rewarded Ad watched
                     Debug.Log("Rewarded Ad watched");
                     EventBroker.Instance().SendMessage(new EventAdsRewardedCompleted());
+                    
                 } 
             }
             else if (showResult == ShowResult.Failed) {
