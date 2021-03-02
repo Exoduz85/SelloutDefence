@@ -1,9 +1,10 @@
 ﻿using System;
+using EventBrokerFolder;
 using UnityEngine;
 using UnityEngine.Purchasing;
 
 namespace InAppPurchases {
-    public class MyIAPManager : MonoBehaviour, IStoreListener {
+    public class MyIAPManager : MonoBehaviour, IStoreListener, IStoreHandler {
         
         //All info in this script comes from these sources.
         
@@ -29,21 +30,21 @@ namespace InAppPurchases {
                 InitializePurchasing();
             }
         }
-
+       
         public void InitializePurchasing() {
             
             if (IsInitialized) return;
             
             var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
-            builder.AddProduct(this.purchaseGems10, ProductType.NonConsumable);
-            builder.AddProduct(this.purchaseGems20, ProductType.NonConsumable);
-            builder.AddProduct(this.purchaseGems40, ProductType.NonConsumable);
+            builder.AddProduct(this.purchaseGems10, ProductType.Consumable);
+            builder.AddProduct(this.purchaseGems20, ProductType.Consumable);
+            builder.AddProduct(this.purchaseGems40, ProductType.Consumable);
             UnityPurchasing.Initialize (this, builder);
 
             #region FYI
             //There are 3 types of Items to add to the store
-            //Consumables - Can not be rebought, such as RemoveAds for eg.
-            //NonConsumables - Can be purchased multiple times
+            //Consumables - Can be purchased multiple times
+            //NonConsumables - Can not be rebought, such as RemoveAds for eg.
             //Subscription - duh
             
             //Example of how to do it for multiple Platforms
@@ -77,16 +78,19 @@ namespace InAppPurchases {
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", e.purchasedProduct.definition.id));
                 // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+                EventBroker.Instance().SendMessage(new EventGemsPurchased(10));
                 
             }
             else if (String.Equals(e.purchasedProduct.definition.id, this.purchaseGems20, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", e.purchasedProduct.definition.id));
+                EventBroker.Instance().SendMessage(new EventGemsPurchased(20));
                 
             }
             else if (String.Equals(e.purchasedProduct.definition.id, this.purchaseGems40, StringComparison.Ordinal))
             {
                 Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", e.purchasedProduct.definition.id));
+                EventBroker.Instance().SendMessage(new EventGemsPurchased(40));
             }
             else 
             {
@@ -105,6 +109,23 @@ namespace InAppPurchases {
         public void OnPurchaseFailed (Product i, PurchaseFailureReason p)
         {
             Debug.Log("Purchase Failed");
+        }
+
+        public void BuyGems(string gemPackage) {
+            switch (gemPackage) {
+                case "purchase_gems_10":
+                    EventBroker.Instance().SendMessage(new EventGemsPurchased(10));
+                    break;
+                case "purchase_gems_20":
+                    EventBroker.Instance().SendMessage(new EventGemsPurchased(20));
+                    break;
+                case "purchase_gems_40":
+                    EventBroker.Instance().SendMessage(new EventGemsPurchased(40));
+                    break;
+                default:
+                    Debug.Log("invalid item purchase request: "+gemPackage);
+                    break;
+            }
         }
     }
 }

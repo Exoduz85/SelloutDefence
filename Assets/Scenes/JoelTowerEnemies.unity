@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserTower (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2678410343308933246, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3179d63780ef546ba9b5fe1f5ef71290, type: 2}
     - target: {fileID: 2678410343308933247, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -191,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserTower (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2678410343308933246, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3179d63780ef546ba9b5fe1f5ef71290, type: 2}
     - target: {fileID: 2678410343308933247, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1043,7 +1051,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1339,6 +1347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserTower
       objectReference: {fileID: 0}
+    - target: {fileID: 2678410343308933246, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
+      propertyPath: towerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 328a8ed544aa9ea449cd42d8ce05aeb0, type: 2}
     - target: {fileID: 2678410343308933247, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
       propertyPath: m_RootOrder
       value: 7

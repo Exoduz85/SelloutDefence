@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: grasstiles_10
+  m_Name: TowerBase
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: -954137944537140049, guid: aa5f40d9b1a1845569536b25f1e34bbc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

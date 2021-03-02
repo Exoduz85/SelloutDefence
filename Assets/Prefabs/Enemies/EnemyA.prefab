@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8120042348868839779}
   - component: {fileID: 8901751103076651289}
   - component: {fileID: 4107077077018372301}
+  - component: {fileID: -1958424536396212143}
   m_Layer: 0
   m_Name: EnemyA
   m_TagString: Enemy
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0623dc07339084767b49e95b1ef6123e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b17bc735ba5ae4584a13008e65fdec95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,3 +129,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0590131, y: 1.1191773, z: 0.2}
   m_Center: {x: -0.0200551, y: 0.010027289, z: 0}
+--- !u!114 &-1958424536396212143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120042348868839783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29a81cdc6ebe1414bb171da81e2af1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotatingSpeed: 100

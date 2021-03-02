@@ -10,7 +10,7 @@ namespace Enemy{
         private Transform[] waypoints;
         private int currentWaypoint = 1;
     
-        private float initalTimer = 1f;
+        private float initalTimer = 0.5f;
     
         void Start(){
             FindWaypoints();

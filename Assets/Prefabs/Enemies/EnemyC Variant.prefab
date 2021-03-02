@@ -54,10 +54,10 @@ PrefabInstance:
     - target: {fileID: 1707163508990716793, guid: 12f3e05a0359800499168ddab4e40557, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1d219c732e4ab495e858640f50ce29b3, type: 3}
+      objectReference: {fileID: 21300000, guid: 34ffeb2cd45054705b853078c335639e, type: 3}
     - target: {fileID: 1707163508990716795, guid: 12f3e05a0359800499168ddab4e40557, type: 3}
       propertyPath: m_Name
-      value: EnemyC
+      value: EnemyC Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1707163508990716799, guid: 12f3e05a0359800499168ddab4e40557, type: 3}
       propertyPath: waypointPath

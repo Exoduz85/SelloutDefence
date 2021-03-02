@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Player.Tower {
     public class Tower : MonoBehaviour, ITower {
         [SerializeField]
-        private TowerData towerData;
+        public TowerData towerData;
 
         [SerializeField]
         private List<GameObject> targets = new List<GameObject>();
@@ -27,19 +27,28 @@ namespace Player.Tower {
 
         public void SetUp(TowerData towerData) {
             this.towerData = towerData;
-            this.gameObject.AddComponent<SpriteRenderer>().sprite = towerData.mainSprite;
             this.gameObject.AddComponent<SphereCollider>().radius = towerData.attackRange;
             this.gameObject.GetComponent<SphereCollider>().isTrigger = true;
         }
 
         private void Update() {
             UpdateTime();
+
+            RemoveDeadEnemies();
             
             if (targets.Count >0 && target == null) 
                 UpdateTarget();
             
             if (this.CanAttack) 
                 Attack();
+        }
+
+        private void RemoveDeadEnemies(){
+            for (var i = targets.Count - 1; i >= 0; i--){
+                if (targets[i] == null){
+                    targets.Remove(targets[i]);
+                }
+            }
         }
 
         public void UpdateTime() {
