@@ -12,5 +12,7 @@ namespace Player.Tower{
         public TileBase towerAddon;
         public float projectileSpeed;
         public GameObject projectilePrefab;
+        
+        
     }
 }

@@ -3,9 +3,13 @@ using UnityEngine.Tilemaps;
 
 namespace Player.BuildTower {
     public class SelectedTile : MonoBehaviour {
-        public GameObject addonSprites;
-        public Tilemap addons;
-        Vector3 position;
+        [SerializeField]
+        GameObject addonSprites;
+        [SerializeField]
+        Tilemap addons;
+        [SerializeField]
+        Tilemap tileMap;
+        Vector3 mousePosition;
         PlayerGold playerGold;
 
         void Start() {
@@ -14,16 +18,28 @@ namespace Player.BuildTower {
 
         void Update() {
             if (Input.GetKeyUp(KeyCode.Mouse0)) {
-                this.addonSprites.SetActive(false);
-                this.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                var tileMap = GetComponent<Tilemap>();
-                var cell = tileMap.WorldToCell(new Vector3(this.position.x, this.position.y, this.position.z));
-                var tmp = tileMap.GetTile(cell);
-                if (tmp == null) return;
-
-                this.addonSprites.transform.position = new Vector3(this.position.x, this.position.y, 0);
-                this.addonSprites.SetActive(true);
+                GetMousePosition();
+                ToggleAddonSprites(false);
+                if (ValidateTileBase()) return;
+                ToggleAddonSprites(true);
             }
+        }
+
+        void ToggleAddonSprites(bool shouldShow) {
+            this.addonSprites.transform.position = new Vector3(this.mousePosition.x, this.mousePosition.y, 0);
+            this.addonSprites.SetActive(shouldShow);
+        }
+
+        bool ValidateTileBase() {
+            var cell = this.tileMap.WorldToCell(new Vector3(this.mousePosition.x, this.mousePosition.y, this.mousePosition.z));
+            var tileBase = this.tileMap.GetTile(cell);
+            if (tileBase == null) return true;
+
+            return this.addons.GetTile(cell) != null;
+        }
+
+        void GetMousePosition() {
+            this.mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
         public void AssignAddon(Tower.Tower tower) {
@@ -32,11 +48,11 @@ namespace Player.BuildTower {
                 return;
             }
 
-            Instantiate(tower, new Vector3(this.position.x, this.position.y, 0), Quaternion.identity);
+            Instantiate(tower, new Vector3(this.mousePosition.x, this.mousePosition.y, 0), Quaternion.identity);
             this.playerGold.Gold -= tower.towerData.costRequiredToBuy;
             print($"Tower purchased for {tower.towerData.costRequiredToBuy}, gold left: {this.playerGold.Gold}");
             var tileMap = GetComponent<Tilemap>();
-            var cell = tileMap.WorldToCell(new Vector3(this.position.x, this.position.y, this.position.z));
+            var cell = tileMap.WorldToCell(new Vector3(this.mousePosition.x, this.mousePosition.y, this.mousePosition.z));
             this.addons.SetTile(cell, tower.towerData.towerAddon);
         }
     }
