@@ -7,5 +7,6 @@ namespace EnemySpawner{
         [SerializeField]public int numberOfEnemies;
         [SerializeField]public float spawnInterval;
         [SerializeField]public float enemySpeed;
+
     }
 }
