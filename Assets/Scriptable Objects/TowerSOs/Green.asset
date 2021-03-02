@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerType: Ground
   attackSpeed: 1
-  attackRange: 5
-  damage: 5
+  attackRange: 8
+  damage: 3
   costRequiredToBuy: 10
   towerAddon: {fileID: 11400000, guid: f910ee40e16fb5549be1cc505b6d6f14, type: 2}
-  projectileSpeed: 4
-  projectilePrefab: {fileID: 7302567784863897187, guid: 07ed7c318202543978bd179d8d60ca56, type: 3}
+  projectileSpeed: 10
+  projectilePrefab: {fileID: 7302567784863897187, guid: ee5bade095c764813826559a77fd6dbe, type: 3}
