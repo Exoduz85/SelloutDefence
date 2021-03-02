@@ -11,6 +11,7 @@ namespace Player.Gems {
             set {
                 this.totGems = value;
                 EventBroker.Instance().SendMessage(new EventUpdateGems(this.totGems));
+                print("Updating Player Gems: " +this.totGems);
             }
         }
 

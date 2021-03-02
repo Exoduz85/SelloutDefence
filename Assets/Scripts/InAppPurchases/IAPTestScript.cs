@@ -1,4 +1,5 @@
 ﻿using EventBrokerFolder;
+using Player.Gems;
 using UnityEngine;
 
 namespace InAppPurchases {
@@ -12,12 +13,15 @@ namespace InAppPurchases {
             switch (gemPackage) {
                 case purchaseGems10:
                     EventBroker.Instance().SendMessage(new EventGemsPurchased(10));
+                    EventBroker.Instance().SendMessage(new EventIncrementGems(10));
                     break;
                 case purchaseGems20:
                     EventBroker.Instance().SendMessage(new EventGemsPurchased(20));
+                    EventBroker.Instance().SendMessage(new EventIncrementGems(20));
                     break;
                 case purchaseGems40:
                     EventBroker.Instance().SendMessage(new EventGemsPurchased(40));
+                    EventBroker.Instance().SendMessage(new EventIncrementGems(40));
                     break;
                 default:
                     break;
