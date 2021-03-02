@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2157455718408020861}
   - component: {fileID: 2157455718408020860}
   m_Layer: 5
-  m_Name: UpgradeOptions
+  m_Name: UpgradeOptionsPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
