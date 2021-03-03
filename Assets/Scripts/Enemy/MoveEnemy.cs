@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Enemy{
     public class MoveEnemy : MonoBehaviour{
         [SerializeField]private WaypointsPath waypointPath;
-        [SerializeField]public float speed = 10;
+        [HideInInspector] public float speed = 10;
     
         private Transform[] waypoints;
         private int currentWaypoint = 1;
