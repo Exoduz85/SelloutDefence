@@ -93,5 +93,8 @@ namespace EnemySpawner {
             newEnemy.name += enemyInWaveNumber;
             enemyInWaveNumber++;
         }
+        
+        
+        
     }
 }
