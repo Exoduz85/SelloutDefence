@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3525926899194727212}
   - component: {fileID: 592807638390115129}
-  - component: {fileID: 1445771817694577631}
-  - component: {fileID: 4532868876685165709}
   - component: {fileID: 3269052671828074394}
   m_Layer: 0
   m_Name: Enemy
@@ -48,35 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotatingSpeed: 100
---- !u!54 &1445771817694577631
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215037031600444820}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &4532868876685165709
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215037031600444820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0590131, y: 1.1191773, z: 0.2}
-  m_Center: {x: -0.0200551, y: 0.010027289, z: 0}
 --- !u!212 &3269052671828074394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -227,6 +196,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2185073743042868342}
   - component: {fileID: 7990194433999330730}
+  - component: {fileID: -7576437069721698258}
+  - component: {fileID: 5678387403365558310}
   m_Layer: 0
   m_Name: ShurikenPurpleTwo
   m_TagString: Enemy
@@ -264,6 +235,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointPath: {fileID: 11400000, guid: c15b2790147da9f4e97441cbf973610f, type: 2}
   speed: 10
+--- !u!54 &-7576437069721698258
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185073743042868341}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &5678387403365558310
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185073743042868341}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4187740711885325643
 GameObject:
   m_ObjectHideFlags: 0

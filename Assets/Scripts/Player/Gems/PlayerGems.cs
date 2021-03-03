@@ -37,7 +37,5 @@ namespace Player.Gems {
         public void RestoreState(object state) {
             TotalGems = (int)state;
         }
-
-        
     }
 }

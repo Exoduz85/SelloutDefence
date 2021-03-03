@@ -1,3 +1,4 @@
+using System;
 using EventBrokerFolder;
 using UnityEngine;
 
@@ -10,9 +11,5 @@ namespace Player.Tower {
         public float attackSpeedUpgrade;
 
         public Sprite sprite;
-
-        public void UpgradeDamage() {
-            Debug.Log("Ooh yeah, upgrade me harder!");
-        }
     }
 }

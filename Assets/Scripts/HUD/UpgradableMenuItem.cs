@@ -10,7 +10,7 @@ namespace HUD {
 
         public void Initialize(string title, int price, UnityAction onPurchase) {
             this.titleText.text = title;
-            this.priceText.text = $"{price.ToString()} Gems"; //or some local currency indicator
+            this.priceText.text = $"{price.ToString()} Gems"; 
             GetComponent<Button>().onClick.AddListener(onPurchase);
             GetComponent<Button>().onClick.AddListener(() => Destroy(FindObjectOfType<UpgradeMenu>().gameObject));
         }
