@@ -63,5 +63,9 @@ PrefabInstance:
       propertyPath: waypointPath
       value: 
       objectReference: {fileID: 11400000, guid: 59cdaccf54cb5fb40b8f3f9c89911759, type: 2}
+    - target: {fileID: 2647521475068051604, guid: 12f3e05a0359800499168ddab4e40557, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4f2133f81ea3542cd9f3691a6cae4f94, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12f3e05a0359800499168ddab4e40557, type: 3}

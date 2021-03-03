@@ -19,4 +19,4 @@ MonoBehaviour:
   costRequiredToBuy: 10
   towerAddon: {fileID: 11400000, guid: a5a135b290b429c468726f932196e886, type: 2}
   projectileSpeed: 4
-  projectilePrefab: {fileID: 7302567784863897187, guid: 07ed7c318202543978bd179d8d60ca56, type: 3}
+  projectilePrefab: {fileID: 7302567784863897187, guid: dd08651bbe1274d4dabfb8210c0e22f4, type: 3}

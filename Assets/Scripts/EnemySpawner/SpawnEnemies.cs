@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Enemy;
+using EventBrokerFolder;
 using UnityEngine;
 
 namespace EnemySpawner {
@@ -35,6 +37,14 @@ namespace EnemySpawner {
             }
         }
 
+        // void Start() {
+        //     EventBroker.Instance().SubscribeMessage<EventStartWave>(CanSpawnNextWave);
+        // }
+
+        // void OnDestroy() {
+        //     EventBroker.Instance().SubscribeMessage<EventStartWave>(CanSpawnNextWave);
+        // }
+
         void Update() {
             //we have traversed all waves
             if (waveNumber >= _wavesList.Count) {
@@ -49,19 +59,27 @@ namespace EnemySpawner {
 
             if (isReadyToSpawn()) {
                 SpawnEnemy();
-                enemyInWaveNumber++;
             }
 
             //we have traversed all enemies in the current wave
-            if (enemyInWaveNumber >= _wavesList[waveNumber].NumberOfEnemies) {
-                waveNumber++;
-                enemyInWaveNumber = 0;
-            }
+            
+            
+            // if (false) {
+            //     waveNumber++;
+            //     enemyInWaveNumber = 0;
+            // }
         }
+        // void CanSpawnNextWave(EventStartWave startWave) {
+        //     if(!startWave.startSpawnEnemies) return;
+        //     this.waveNumber++;
+        //     this.enemyInWaveNumber = 0;
+        // }
+        
+        //TODO put wavenumber increment logic here (based on button event
 
         private bool isReadyToSpawn() {
             spawnTimer += Time.deltaTime;
-            if (spawnTimer >= _wavesList[waveNumber].SpawnInterval) {
+            if (spawnTimer >= _wavesList[waveNumber].SpawnInterval && enemyInWaveNumber < _wavesList[waveNumber].NumberOfEnemies) {
                 spawnTimer = 0;
                 return true;
             }
@@ -73,6 +91,7 @@ namespace EnemySpawner {
             var newEnemy = Instantiate(_wavesList[waveNumber].EnemyPrefab, transform.position, Quaternion.identity, transform);
             newEnemy.GetComponent<MoveEnemy>().speed = _wavesList[waveNumber].EnemySpeed;
             newEnemy.name += enemyInWaveNumber;
+            enemyInWaveNumber++;
         }
     }
 }

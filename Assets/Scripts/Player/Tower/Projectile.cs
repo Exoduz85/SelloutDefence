@@ -19,9 +19,9 @@ namespace Player.Tower{
                 Destroy(this.gameObject);
                 return;
             }
-            
-            float angle = Mathf.Atan2(this.transform.position.y - to.position.y, this.transform.position.x - to.position.x) - 90 * Mathf.Rad2Deg;
-            this.transform.rotation = quaternion.Euler(0,0, angle);
+            // 
+            float angle = Mathf.Atan2(this.transform.position.y - to.position.y, this.transform.position.x - to.position.x) * Mathf.Rad2Deg;
+            this.transform.localRotation = Quaternion.Euler(0,0,angle + 45);
             this.transform.position = Vector3.MoveTowards(this.transform.position, to.position, speed * Time.deltaTime);
         }
         public void StartMove(Transform targetTransform, float projectileSpeed, float projectileDamage, bool canMove){
