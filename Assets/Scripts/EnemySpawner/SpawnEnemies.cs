@@ -62,5 +62,8 @@ namespace EnemySpawner{
             var newEnemy = Instantiate(_wavesList[waveNumber].EnemyPrefab);
             newEnemy.GetComponent<MoveEnemy>().speed = _wavesList[waveNumber].EnemySpeed;
         }
+        
+        
+        
     }
 }
