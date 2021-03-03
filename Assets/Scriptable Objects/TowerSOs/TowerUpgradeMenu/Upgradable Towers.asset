@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217cba4c6cc54fd18b62896f20658d71, type: 3}
+  m_Name: Upgradable Towers
+  m_EditorClassIdentifier: 
+  upgradableTowerDatas:
+  - {fileID: 11400000, guid: c21bdfc3a9b285f46a25ca4f60bbd349, type: 2}
+  - {fileID: 11400000, guid: 0613774c816afdd4abf1b99baff170a9, type: 2}
+  - {fileID: 11400000, guid: 3a2270d80fa4c274a8e01d0b39c2acc5, type: 2}
+  - {fileID: 11400000, guid: 34a25948d4c16a5418a0f6816a3fc26e, type: 2}
+  - {fileID: 11400000, guid: f65be0b621b6b7247987823b80705b46, type: 2}
+  - {fileID: 11400000, guid: 7eef8276dacb539499015ea7ef59a77b, type: 2}

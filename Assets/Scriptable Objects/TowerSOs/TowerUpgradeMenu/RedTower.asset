@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f09fd1d8d25cf9a4f83c0ef34df3ea88, type: 3}
-  m_Name: BasicTower
+  m_Name: RedTower
   m_EditorClassIdentifier: 
-  damageUpgrade: 20
-  attackSpeedUpgrade: 10
-  specialUpgrade: 10
-  upgradeMenu: {fileID: 3530432333797907135, guid: 8fe582ac39f8e0944ab80fe1912b1821, type: 3}
+  damageUpgrade: 1.1
+  rangeUpgrade: 1.1
+  attackSpeedUpgrade: 1.1
+  sprite: {fileID: 21300000, guid: ab377e07acb404994a5b84a32f63f5ac, type: 3}

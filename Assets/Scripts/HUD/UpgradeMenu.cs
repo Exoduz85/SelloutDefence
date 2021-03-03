@@ -13,9 +13,9 @@ namespace HUD {
             this.menuNameText.text = menuName;
         }
         
-        public void AddUpgrade(string upgradeName, float price, UnityAction onPurchase) {
+        public void AddUpgrade(string upgradeName, int gemPrice, UnityAction onPurchase) {
             var instance = Instantiate(this.upgradableMenuItemPrefab, this.upgradeOptionsPanel);
-            instance.GetComponent<UpgradableMenuItem>().Initialize(upgradeName, price, onPurchase);
+            instance.GetComponent<UpgradableMenuItem>().Initialize(upgradeName, gemPrice, onPurchase);
             
         }
     }

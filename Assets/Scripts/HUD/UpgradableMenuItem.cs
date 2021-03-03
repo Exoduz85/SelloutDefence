@@ -8,10 +8,11 @@ namespace HUD {
         [SerializeField] Text titleText;
         [SerializeField] Text priceText;
 
-        public void Initialize(string title, float price, UnityAction onPurchase) {
+        public void Initialize(string title, int price, UnityAction onPurchase) {
             this.titleText.text = title;
-            this.priceText.text = price.ToString("0,00");
+            this.priceText.text = $"{price.ToString()} Gems"; //or some local currency indicator
             GetComponent<Button>().onClick.AddListener(onPurchase);
+            GetComponent<Button>().onClick.AddListener(() => Destroy(FindObjectOfType<UpgradeMenu>().gameObject));
         }
     }
 }
