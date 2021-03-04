@@ -3,7 +3,7 @@ using Player.Gems;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace HUD {
+namespace HUD.MainMenu.ResourcesUI {
     public class Gems : MonoBehaviour {
         [SerializeField] Text text;
 

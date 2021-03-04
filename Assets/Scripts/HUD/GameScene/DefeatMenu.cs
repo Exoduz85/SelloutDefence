@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace HUD {
+namespace HUD.GameScene {
     public class DefeatMenu : MonoBehaviour{
         //when a player dies
         //this menu shows up

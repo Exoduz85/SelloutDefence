@@ -1,7 +1,7 @@
 using Player.Tower;
 using UnityEngine;
 
-namespace HUD{
+namespace HUD.GameScene{
     public class BuyTower : MonoBehaviour
     {
         // this is just a test script..

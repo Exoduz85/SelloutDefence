@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HUD {
+namespace HUD.MainMenu {
     public class CloseMenu : MonoBehaviour {
         [SerializeField] GameObject windowToClose;
 
