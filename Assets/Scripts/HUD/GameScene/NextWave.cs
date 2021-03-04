@@ -5,30 +5,30 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace HUD.GameScene {
-    public class PlayWave : MonoBehaviour {
+    public class NextWave : MonoBehaviour {
         public Text timerCountDownText;
         public float countDownStart = 10f;
-        string buttonStartText;
+        private string _buttonStartText;
 
         public void Start() {
-            this.buttonStartText = this.timerCountDownText.text;
+            _buttonStartText = timerCountDownText.text;
         }
 
-        IEnumerator countDown(float countDownStartTime) {
+        private IEnumerator CountDown(float countDownStartTime) {
             var spaceTMP = countDownStartTime;
             while (spaceTMP > 0) {
                 spaceTMP -= Time.deltaTime;
-                this.timerCountDownText.text = spaceTMP.ToString("0");
+                timerCountDownText.text = spaceTMP.ToString("0");
                 yield return null;
             }
             GetComponent<Button>().interactable = true;
-            this.timerCountDownText.text = this.buttonStartText;
+            timerCountDownText.text = _buttonStartText;
         }
 
-        public void playWaveButton() {
+        public void NextWaveButton() {
             GetComponent<Button>().interactable = false;
             EventBroker.Instance().SendMessage(new EventStartWave(true));
-            StartCoroutine(countDown(this.countDownStart));
+            StartCoroutine(CountDown(countDownStart));
         }
     }
 }
