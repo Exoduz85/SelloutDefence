@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 3465384828151705292}
   - component: {fileID: 870505634912487361}
   - component: {fileID: -50752134341682360}
+  - component: {fileID: -3987269264226763684}
   m_Layer: 0
   m_Name: ShurikenMixTwo
   m_TagString: Enemy
@@ -160,6 +161,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3987269264226763684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4658879647202510611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c665ff6ff540347cda8e41f40f013ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
 --- !u!1 &5632304503562348274
 GameObject:
   m_ObjectHideFlags: 0

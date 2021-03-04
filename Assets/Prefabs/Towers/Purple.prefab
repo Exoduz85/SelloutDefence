@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: 2678410343308933246, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
       propertyPath: towerData
       value: 
-      objectReference: {fileID: 11400000, guid: 398c0b19816fae340905b27893ac087d, type: 2}
+      objectReference: {fileID: 11400000, guid: 34a25948d4c16a5418a0f6816a3fc26e, type: 2}
     - target: {fileID: 2678410343308933247, guid: f92b8ce8b99d8364581679f6ab33e231, type: 3}
       propertyPath: m_RootOrder
       value: 0

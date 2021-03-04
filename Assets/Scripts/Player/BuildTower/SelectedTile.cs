@@ -43,17 +43,17 @@ namespace Player.BuildTower {
         }
 
         public void AssignAddon(Tower.Tower tower) {
-            if (this.playerGold.Gold < tower.towerData.costRequiredToBuy) {
+            if (this.playerGold.Gold < tower.towerData.towerData.costRequiredToBuy) {
                 print("Not enough gold for purchase");
                 return;
             }
 
             Instantiate(tower, new Vector3(this.mousePosition.x, this.mousePosition.y, 0), Quaternion.identity);
-            this.playerGold.Gold -= tower.towerData.costRequiredToBuy;
-            print($"Tower purchased for {tower.towerData.costRequiredToBuy}, gold left: {this.playerGold.Gold}");
+            this.playerGold.Gold -= tower.towerData.towerData.costRequiredToBuy;
+            print($"Tower purchased for {tower.towerData.towerData.costRequiredToBuy}, gold left: {this.playerGold.Gold}");
             var tileMap = GetComponent<Tilemap>();
             var cell = tileMap.WorldToCell(new Vector3(this.mousePosition.x, this.mousePosition.y, this.mousePosition.z));
-            this.addons.SetTile(cell, tower.towerData.towerAddon);
+            this.addons.SetTile(cell, tower.towerData.towerData.towerAddon);
         }
     }
 }

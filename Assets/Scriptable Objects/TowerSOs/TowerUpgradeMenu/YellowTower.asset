@@ -16,4 +16,4 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: 1b65e17c1604c214fabd31bd85226321, type: 2}
   damageUpgrade: 1.1
   rangeUpgrade: 1.1
-  attackSpeedUpgrade: 1.1
+  attackSpeedUpgrade: 0.9

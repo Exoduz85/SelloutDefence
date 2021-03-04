@@ -8,7 +8,7 @@ namespace Player.Tower{
         private void Start(){
             var tower = new GameObject();
             tower.transform.position = Vector3.zero;
-            tower.AddComponent<Tower>().SetUp(this.TowerData);
+            //tower.AddComponent<Tower>().SetUp(this.TowerData);
         }
     }
 }
