@@ -62,12 +62,13 @@ namespace EnemySpawner {
             }
 
             //we have traversed all enemies in the current wave
-            
-            
-            // if (false) {
-            //     waveNumber++;
-            //     enemyInWaveNumber = 0;
-            // }
+            if (enemyInWaveNumber >= _wavesList[waveNumber].NumberOfEnemies){
+                     
+               
+                    waveNumber++;
+                    enemyInWaveNumber = 0;
+               
+            }
         }
         // void CanSpawnNextWave(EventStartWave startWave) {
         //     if(!startWave.startSpawnEnemies) return;
