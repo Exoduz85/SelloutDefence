@@ -1,11 +1,9 @@
-﻿using System;
-using EventBrokerFolder;
+﻿using EventBrokerFolder;
 using Player.BuildTower;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
-namespace HUD {
+namespace HUD.GameScene {
     public class PlayerGoldHud : MonoBehaviour {
         Text goldHud;
 

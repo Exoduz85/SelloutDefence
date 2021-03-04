@@ -3,7 +3,7 @@ using EventBrokerFolder;
 using Player.Energy;
 using UnityEngine;
 
-namespace HUD {
+namespace HUD.MainMenu {
     public class PlayGame : MonoBehaviour {
         public void Play(string sceneToLoad) {
             EventBroker.Instance().SendMessage(new EventLoadScene(sceneToLoad));

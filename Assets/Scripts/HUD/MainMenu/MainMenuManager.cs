@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace HUD {
+namespace HUD.MainMenu {
     public class MainMenuManager : MonoBehaviour {
         [SerializeField] GameObject mainMenu;
         [SerializeField] GameObject upgradeSelectionMenu;

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace HUD {
+namespace HUD.MainMenu.PurchaseUpgrades {
     public class UpgradeMenu : MonoBehaviour {
         
         [SerializeField] Text menuNameText;

@@ -2,31 +2,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace HUD {
-    public class RestartGame : MonoBehaviour {
+namespace HUD.GameScene {
+    public class MainMenuButton : MonoBehaviour {
         
         //Drag button from the Editor to this
-        public Button restartButton;
+        public Button mainMenuButton;
 
         void OnEnable()
         {
             //Register Button Event
-            restartButton.onClick.AddListener(() => buttonCallBack());
+            this.mainMenuButton.onClick.AddListener(() => buttonCallBack());
         }
 
         private void buttonCallBack()
         {
-            Debug.Log("Clicked: " + restartButton.name);
             //Get current scene name
-            string scene = SceneManager.GetActiveScene().name;
+            string scene = SceneManager.GetSceneByName("MainMenu").ToString();
             //Load it
             SceneManager.LoadScene(scene, LoadSceneMode.Single);
         }
 
+        public object Scenes { get; set; }
+
         void OnDisable()
         {
             //Un-Register Button Event
-            restartButton.onClick.RemoveAllListeners();
+            this.mainMenuButton.onClick.RemoveAllListeners();
         }
     }
 }

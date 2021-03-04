@@ -3,7 +3,7 @@ using Player.Energy;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace HUD {
+namespace HUD.MainMenu.ResourcesUI {
     public class RemainingEnergyHud : MonoBehaviour {
         Text energyText;
 
