@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09fd1d8d25cf9a4f83c0ef34df3ea88, type: 3}
   m_Name: OrangeTower
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 7ef3ed884335a473e8022bdc4493eaef, type: 3}
+  towerData: {fileID: 11400000, guid: 04c14b553cb6e894d829f4c233cc99d0, type: 2}
   damageUpgrade: 1.1
   rangeUpgrade: 1.1
   attackSpeedUpgrade: 1.1
-  sprite: {fileID: 21300000, guid: 7ef3ed884335a473e8022bdc4493eaef, type: 3}

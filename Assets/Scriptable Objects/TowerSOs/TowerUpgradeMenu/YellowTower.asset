@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09fd1d8d25cf9a4f83c0ef34df3ea88, type: 3}
   m_Name: YellowTower
   m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 765c90dc13244409494181ffbfb70989, type: 3}
+  towerData: {fileID: 11400000, guid: 1b65e17c1604c214fabd31bd85226321, type: 2}
   damageUpgrade: 1.1
   rangeUpgrade: 1.1
   attackSpeedUpgrade: 1.1
-  sprite: {fileID: 21300000, guid: 765c90dc13244409494181ffbfb70989, type: 3}

@@ -21,9 +21,9 @@ namespace HUD {
         void GenerateUpgradeMenu(UpgradableTowerData upgradableTowerData) {
             var instance = Instantiate(this.upgradeMenu, this.canvas);
             instance.GetComponent<UpgradeMenu>().UpdateName($"{upgradableTowerData.name} Upgrade");
-            instance.GetComponent<UpgradeMenu>().AddUpgrade("Upgrade Damage", 1, () => Debug.Log("Damage Upgrade Purchased"));
-            instance.GetComponent<UpgradeMenu>().AddUpgrade("Upgrade Speed", 1, () => Debug.Log("Speed Upgrade Purchased"));
-            instance.GetComponent<UpgradeMenu>().AddUpgrade("Upgrade Range", 1, () => Debug.Log("Range Upgrade Purchased"));
+            instance.GetComponent<UpgradeMenu>().AddUpgrade("Upgrade Damage", 1, () => upgradableTowerData.DmgUpgradeCount++);
+            instance.GetComponent<UpgradeMenu>().AddUpgrade("Upgrade Range", 1, () => upgradableTowerData.RangeUpgradeCount++);
+            instance.GetComponent<UpgradeMenu>().AddUpgrade("Upgrade Speed", 1, () => upgradableTowerData.SpeedUpgradeCount++);
         }
     }
 }
