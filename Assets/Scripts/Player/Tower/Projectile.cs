@@ -32,14 +32,12 @@ namespace Player.Tower{
         }
         public void OnTriggerEnter(Collider other){
             if (other.CompareTag("Enemy")){
-                EventBroker.Instance().SendMessage(new EventUpdatePlayerGold(5));
                 Destroy(this.gameObject);
-                Destroy(other.gameObject);
-            }
-        }
+                other.GetComponent<Health>().TakeDamage(this.damage);
+                print($"Damage dealt: {this.damage}");
+                EventBroker.Instance().SendMessage(new EventUpdatePlayerGold(5));
 
-        void DealDamage(EventTakeDamage damage) {
-            
+            }
         }
     }
 }

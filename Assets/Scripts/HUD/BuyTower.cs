@@ -5,7 +5,7 @@ namespace HUD{
     public class BuyTower : MonoBehaviour
     {
         // this is just a test script..
-        public TowerData tower;
+        public UpgradableTowerData tower;
         public void CreateOneTower(){
             var instance = new GameObject();
             instance.transform.position = Vector3.zero;

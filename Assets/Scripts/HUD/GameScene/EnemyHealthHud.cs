@@ -1,36 +1,22 @@
-﻿using System;
-using System.Collections;
-using System.Threading;
+﻿using Core;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace HUD.GameScene {
     public class EnemyHealthHud : MonoBehaviour {
-        public float health;
         Image img;
-        float value;
+        [SerializeField]
+        Health theDamnHealth;
+
 
         void Start() {
+            this.theDamnHealth = GetComponentInParent<Health>();
             this.img = GetComponent<Image>();
+            this.theDamnHealth.updateHealthEvent += UpdateHud;
         }
 
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.D)) {
-                DealDamage(5);
-            }
-        }
-
-        void DealDamage(float i) {
-            value = this.img.fillAmount - i / this.health;
-            print(this.value);
-            StartCoroutine(LerpSomething());
-        }
-
-        IEnumerator LerpSomething() {
-            while (this.img.fillAmount > this.value) {
-                this.img.fillAmount = Mathf.Lerp(this.img.fillAmount, this.value, .1f);
-                yield return new WaitForEndOfFrame();
-            }
+        void UpdateHud(float i) {
+            this.img.fillAmount = i / this.theDamnHealth.maxHealth;
         }
     }
 }

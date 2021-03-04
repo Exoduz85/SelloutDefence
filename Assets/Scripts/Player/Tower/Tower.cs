@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Player.Tower {
     public class Tower : MonoBehaviour, ITower {
         [SerializeField]
-        public TowerData towerData;
+        public UpgradableTowerData towerData;
 
         [SerializeField]
         private List<GameObject> targets = new List<GameObject>();
@@ -19,15 +19,15 @@ namespace Player.Tower {
 
         private float _elapsedTime;
         private bool CanAttack => this.ReadyToAttack && target != null;
-        private bool ReadyToAttack => this._elapsedTime > towerData.attackSpeed;
+        private bool ReadyToAttack => this._elapsedTime > towerData.TowerSpeed();
 
         private void Start(){
             SetUp(towerData);
         }
 
-        public void SetUp(TowerData towerData) {
+        public void SetUp(UpgradableTowerData towerData) {
             this.towerData = towerData;
-            this.gameObject.AddComponent<SphereCollider>().radius = towerData.attackRange;
+            this.gameObject.AddComponent<SphereCollider>().radius = towerData.towerData.attackRange;
             this.gameObject.GetComponent<SphereCollider>().isTrigger = true;
         }
 
@@ -56,9 +56,9 @@ namespace Player.Tower {
         }
 
         public void Attack() {
-            var instance = Instantiate(towerData.projectilePrefab, this.transform.position, quaternion.identity, this.transform);
+            var instance = Instantiate(towerData.towerData.projectilePrefab, this.transform.position, quaternion.identity, this.transform);
             var projectile = instance.GetComponent<Projectile>();
-            projectile.StartMove(target.transform, towerData.projectileSpeed, towerData.damage, true);
+            projectile.StartMove(target.transform, towerData.towerData.projectileSpeed, towerData.TowerDamage(), true);
             this._elapsedTime = 0;
         }
 
