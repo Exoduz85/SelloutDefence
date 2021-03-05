@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace EnemySpawner{
     [CreateAssetMenu]
-    public class EnemyWave : ScriptableObject{
+    public class EnemyGroup : ScriptableObject{
         [SerializeField]public GameObject enemyPrefab;
         [SerializeField]public int numberOfEnemies;
         [SerializeField]public float spawnInterval;
