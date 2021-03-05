@@ -8,6 +8,7 @@ namespace HUD.GameScene {
         public Button playPauseButton;
         public Image play;
         public Image pause;
+        private float timeScaleBeforePause;
 
         public void Start() {
             play.enabled = false;
@@ -15,13 +16,18 @@ namespace HUD.GameScene {
         }
 
         public void TogglePlayPause() {
-            Time.timeScale = Time.timeScale == 1f ? 0f : 1f;
+            if (Time.timeScale != 0f) {
+                timeScaleBeforePause = Time.timeScale;
+                Time.timeScale = 0f;
+            } else {
+                Time.timeScale = timeScaleBeforePause;
+            }
             play.enabled = Time.timeScale == 0;
             pause.enabled = Time.timeScale > 0;
         }
 
         public void PauseGame() {
-            EventBroker.Instance().SendMessage(new EventPlayPauseGame(true));
+            EventBroker.Instance().SendMessage(new EventPlayPauseGame(true, timeScaleBeforePause));
             TogglePlayPause();
         }
     }
