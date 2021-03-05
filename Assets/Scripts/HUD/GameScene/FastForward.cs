@@ -5,10 +5,17 @@ using UnityEngine.UI;
 
 public class FastForward : MonoBehaviour {
     public Button fastForwardButton;
-    public Text fastForwardText;
-
+    public Image play;
+    public Image fastforward;
+    
+    public void Start() {
+        play.enabled = false;
+        fastforward.enabled = true;
+    }
+    
     public void ToggleSpeed() {
         Time.timeScale = Time.timeScale == 1f ? 2f : 1f;
-        fastForwardText.text = Time.timeScale.ToString(Time.timeScale + "x");
+        play.enabled = Time.timeScale > 1f;
+        fastforward.enabled = Time.timeScale == 1f;
     }
 }
