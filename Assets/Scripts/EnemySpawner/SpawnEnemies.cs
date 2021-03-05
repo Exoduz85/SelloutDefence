@@ -7,7 +7,7 @@ using UnityEngine;
 namespace EnemySpawner {
     public class SpawnEnemies : MonoBehaviour {
         [SerializeField]
-        private EnemyWave[] _enemyWaves;
+        private EnemyGroup[] _enemyWaves;
         [SerializeField]
         private bool shouldRepeat;
 
