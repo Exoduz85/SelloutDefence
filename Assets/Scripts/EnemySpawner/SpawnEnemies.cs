@@ -30,20 +30,12 @@ namespace EnemySpawner {
         private float spawnTimer;
         private int waveNumber;
         private int enemyInWaveNumber;
-
+        
         void Awake() {
             foreach (var wave in _enemyWaves) {
                 _wavesList.Add(new WaveData(wave.spawnInterval, wave.numberOfEnemies, wave.enemySpeed, wave.enemyPrefab));
             }
         }
-
-        // void Start() {
-        //     EventBroker.Instance().SubscribeMessage<EventStartWave>(CanSpawnNextWave);
-        // }
-
-        // void OnDestroy() {
-        //     EventBroker.Instance().SubscribeMessage<EventStartWave>(CanSpawnNextWave);
-        // }
 
         void Update() {
             //we have traversed all waves
@@ -63,20 +55,11 @@ namespace EnemySpawner {
 
             //we have traversed all enemies in the current wave
             if (enemyInWaveNumber >= _wavesList[waveNumber].NumberOfEnemies){
-                     
-               
                     waveNumber++;
                     enemyInWaveNumber = 0;
                
             }
         }
-        // void CanSpawnNextWave(EventStartWave startWave) {
-        //     if(!startWave.startSpawnEnemies) return;
-        //     this.waveNumber++;
-        //     this.enemyInWaveNumber = 0;
-        // }
-        
-        //TODO put wavenumber increment logic here (based on button event
 
         private bool isReadyToSpawn() {
             spawnTimer += Time.deltaTime;
@@ -94,8 +77,5 @@ namespace EnemySpawner {
             newEnemy.name += enemyInWaveNumber;
             enemyInWaveNumber++;
         }
-        
-        
-        
     }
 }
