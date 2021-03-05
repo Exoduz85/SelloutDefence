@@ -20,8 +20,7 @@ namespace Core {
             this.updateHealthEvent?.Invoke(this.health);
             if (this.IsDead) {
                 Destroy(this.gameObject);
-            }
+            } 
         }
-        
     }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "261250623187",
+    "project_id": "sellout-defense",
+    "storage_bucket": "sellout-defense.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261250623187:android:c58236dd680dfffd8f1626",
+        "android_client_info": {
+          "package_name": "com.selloutdefense.selloutdefense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261250623187-gcqqram8rlm4s24jtk5jriqp8o4gp18q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhJBCVxuks7gltgdQ-DuC5IAygsIAdcNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261250623187-gcqqram8rlm4s24jtk5jriqp8o4gp18q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

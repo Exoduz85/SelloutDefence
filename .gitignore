@@ -79,4 +79,3 @@ ProjectSettings/VersionControlSettings.asset
 Packages/packages-lock.json
 
 # Ignore all Jason files
-*.json
