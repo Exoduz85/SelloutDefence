@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using Enemy;
 using EventBrokerFolder;
@@ -19,5 +20,9 @@ public class WavesSpawner : MonoBehaviour{
             return;
         Instantiate(enemyWaves[waveNumber], transform.position, Quaternion.identity, transform);
         waveNumber++;
+    }
+
+    public void OnDestroy() {
+        EventBroker.Instance().UnsubscribeMessage<EventStartWave>(SpawnNextWave);
     }
 }

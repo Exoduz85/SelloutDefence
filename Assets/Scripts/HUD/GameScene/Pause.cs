@@ -20,5 +20,8 @@ namespace HUD.GameScene {
             EventBroker.Instance().SendMessage(new EventPlayPauseGame(true, timeScaleBeforePause));
             TogglePlayPause();
         }
+        public void OnDestroy() {
+            Time.timeScale = 1f;
+        }
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d9102c469cfc5440958c5336129a48f, type: 3}
-  m_Name: Level1PathAWave2
+  m_Name: Level1PathAGroup2
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1707163508990716795, guid: 12f3e05a0359800499168ddab4e40557, type: 3}
   numberOfEnemies: 10

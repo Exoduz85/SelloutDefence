@@ -1,13 +1,12 @@
+using Core;
+using EventBrokerFolder;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace HUD.GameScene {
     public class MainMenuButton : MonoBehaviour {
         
-        public void ButtonCallBack()
-        {
-            SceneManager.LoadScene("MainMenu");
+        public void ButtonCallBack() { 
+            EventBroker.Instance().SendMessage(new EventLoadScene("MainMenu"));
         }
     }
 }
