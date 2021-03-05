@@ -1,4 +1,5 @@
 using System;
+using Firebase.Auth;
 using UnityEngine;
 
 namespace Core {
