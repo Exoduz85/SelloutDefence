@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8457682889770302787, guid: 6e4fff6f196ed814eb7e7b199693e7d8, type: 3}
       propertyPath: m_Name
-      value: EnemySpawner
+      value: EnemyWave1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e4fff6f196ed814eb7e7b199693e7d8, type: 3}
